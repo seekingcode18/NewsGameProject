@@ -1,6 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
 <h1>Maze</h1>
+{% if user.is_authenticated %}
+    <h3>Welcome Back {{ user.username }}!</h3>
+    <p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+    <h3>Hi there, you don't seem to be logged in</h3>
+    <p><a href="{% url 'login' %}">Login</a></p>
+{% endif %}
 <div class="maze-container"></div>
 {% load static %}
 <script src="{% static 'game.js' %}" type="text/javascript"></script>
