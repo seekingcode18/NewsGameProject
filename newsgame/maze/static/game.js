@@ -1,11 +1,50 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
-const startingPos = [8, 8];
-let headlines = ['test headline 1', 'test headline 2', 'test headline 3']
+const playerSpawnLocation = [8, 8];
+
+// news API
+const url = 'https://newsapi.org/v2/top-headlines?' +
+          'country=us&' +
+          'apiKey=6516669660b24bcda45cfd1a11285e73';
+const req = new Request(url);
+let headlines = [];
+fetch(req)
+  .then(res => res.json())
+  .then(res => {
+    res.articles.map(article => {
+      headlines.push(article)
+    })
+  })
+  // .then(function(response) {
+  //   console.log(response.json());
+  // })
+
+let score = 0;
+
+// let headlines = [
+//   {
+//     title: 'test headline 1',
+//     href: 'https://www.google.com',
+//     clicked: false
+//   },
+//   {
+//     title: 'test headline 2',
+//     href: 'https://www.yahoo.com',
+//     clicked: false
+//   },
+//   {
+//     title: 'test headline 3',
+//     href: 'https://www.bing.com',
+//     clicked: false
+//   }
+// ];
 
 // set up output to display the news and other game info
 const outputBox = document.querySelector('.output');
-const headlineToDisplay = document.createElement('p')
+
+// set up the headline / link
+const headlineToDisplay = document.createElement('p');
+const linkToArticle = document.createElement('a');
 
 // 0 = blank space
 // 1 = wall
@@ -27,8 +66,8 @@ grid = [
 ];
 
 let player = {
-  x: startingPos[0],
-  y: startingPos[1]
+  x: playerSpawnLocation[0],
+  y: playerSpawnLocation[1]
 };
 
 const width = canvas.width;
@@ -76,7 +115,7 @@ function drawExit(posX, posY) {
 
 function drawText() {
   ctx.beginPath();
-  ctx.rect(100,100,100,100);
+  ctx.rect(100, 100, 100, 100);
   ctx.fillStyle = '#cc0000';
   ctx.fill();
   ctx.closePath();
@@ -92,7 +131,7 @@ function draw() {
       //     if 1, draw wall
       if (grid[y][x] == 1) {
         drawWall(x, y);
-      } else if ([5,6,7,8,9].includes(grid[y][x])) {
+      } else if ([5, 6, 7, 8, 9].includes(grid[y][x])) {
         drawNPC(x, y);
         // } else if (grid[y][x] == 3) {
         //   drawPlayer(x,y)
@@ -104,24 +143,39 @@ function draw() {
 
   drawPlayer(player.x, player.y);
 
-  // clear the output box
+  // clear the output box when the player is not on top of it
   while (outputBox.lastChild) {
     outputBox.removeChild(outputBox.lastChild);
   }
 
   // check whether to show the news
-  let currentLocationValue = grid[player.y][player.x]
-  if ([5,6,7,8,9].includes(currentLocationValue)) {
+  let currentLocationValue = grid[player.y][player.x];
+  if ([5, 6, 7, 8, 9].includes(currentLocationValue)) {
     // show relevant headline in output box
-    headlineToDisplay.innerHTML = headlines[currentLocationValue - 5]
+    // linkToArticle.href = '#';
+    linkToArticle.href = headlines[currentLocationValue - 5].url;
+    linkToArticle.target = '_blank'
+    linkToArticle.id = `headline-${currentLocationValue - 5}`
+    linkToArticle.classList.add('headline-link');
+    linkToArticle.onclick = scoreHandler();
+    linkToArticle.innerHTML = headlines[currentLocationValue - 5].title;
+    headlineToDisplay.appendChild(linkToArticle);
     outputBox.appendChild(headlineToDisplay);
   }
 
+
   // exit when player is on exit block
-  if (currentLocationValue == 3) console.log('exit')
-
-
+  if (currentLocationValue == 3) console.log('exit');
 }
+
+function scoreHandler() {
+  // let headlineLink = document.querySelector('.headline-link');
+  // console.log(headlineLink)
+  // score++;
+  console.log(score)
+  // document.getElementById('#scoreBox').innerHTML = `Score (from js) - ${score}`
+}
+
 
 function moveUp() {
   player.y--;
@@ -145,7 +199,7 @@ function moveRight() {
 
 function showNews() {
   if (player.x) {
-    return null
+    return null;
   }
 }
 
@@ -163,8 +217,14 @@ function startGame() {
     if (e.keyCode == 87 && moveIsLegal(player.x, player.y - 1)) moveUp();
     else if (e.keyCode == 83 && moveIsLegal(player.x, player.y + 1)) moveDown();
     else if (e.keyCode == 65 && moveIsLegal(player.x - 1, player.y)) moveLeft();
-    else if (e.keyCode == 68 && moveIsLegal(player.x + 1, player.y)) moveRight();
+    else if (e.keyCode == 68 && moveIsLegal(player.x + 1, player.y))
+      moveRight();
   });
+  const scoreBox = document.querySelector('.scoreBox');
+  const scoreElem = document.createElement('p')
+  scoreElem.innerHTML = `Score (from js) - ${score}`
+  scoreElem.id = 'scoreBox'
+  scoreBox.appendChild(scoreElem)
 }
 
 startGame();
