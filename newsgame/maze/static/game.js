@@ -12,7 +12,8 @@ fetch(req)
   .then(res => res.json())
   .then(res => {
     res.articles.map(article => {
-      headlines.push(article)
+      article.clicked = false;
+      headlines.push(article);
     })
   })
   // .then(function(response) {
@@ -20,24 +21,6 @@ fetch(req)
   // })
 
 let score = 0;
-
-// let headlines = [
-//   {
-//     title: 'test headline 1',
-//     href: 'https://www.google.com',
-//     clicked: false
-//   },
-//   {
-//     title: 'test headline 2',
-//     href: 'https://www.yahoo.com',
-//     clicked: false
-//   },
-//   {
-//     title: 'test headline 3',
-//     href: 'https://www.bing.com',
-//     clicked: false
-//   }
-// ];
 
 // set up output to display the news and other game info
 const outputBox = document.querySelector('.output');
@@ -72,10 +55,6 @@ let player = {
 
 const width = canvas.width;
 const blockWidth = canvas.width / grid.length;
-
-// everything breaks without these 2 lines and I don't know why
-// const p = document.createElement('p');
-// document.querySelector('div').appendChild(p);
 
 function drawWall(posX, posY) {
   ctx.beginPath();
@@ -152,18 +131,13 @@ function draw() {
   let currentLocationValue = grid[player.y][player.x];
   if ([5, 6, 7, 8, 9].includes(currentLocationValue)) {
     // show relevant headline in output box
-    // linkToArticle.href = '#';
     linkToArticle.href = headlines[currentLocationValue - 5].url;
     linkToArticle.target = '_blank'
     linkToArticle.id = `headline-${currentLocationValue - 5}`
     linkToArticle.classList.add('headline-link');
     linkToArticle.innerHTML = headlines[currentLocationValue - 5].title;
     headlineToDisplay.appendChild(linkToArticle);
-    headlineToDisplay.addEventListener('click', e => {
-      // score += 5;
-      // console.log('test')
-      scoreHandler();
-    })
+    headlineToDisplay.addEventListener('click', e => scoreHandler(currentLocationValue));
     outputBox.appendChild(headlineToDisplay);
   }
 
@@ -172,12 +146,14 @@ function draw() {
   if (currentLocationValue == 3) console.log('exit');
 }
 
-function scoreHandler() {
-  // let headlineLink = document.querySelector('.headline-link');
-  // console.log(headlineLink)
-  score += 5;
-  console.log(score)
-  document.getElementById('scoreBox').innerHTML = `Score (from js) - ${score}`
+function scoreHandler(currentLocationValue) {
+  // only increase score for the first time player clicks a particular headline
+  if (headlines[currentLocationValue].clicked == false) {
+    score += 5;
+    console.log(score)
+    document.getElementById('scoreBox').innerHTML = `Score (from js) - ${score}`
+  }
+  headlines[currentLocationValue].clicked = true
 }
 
 
