@@ -90,21 +90,25 @@ function draw() {
 // w 87
 
 function moveUp() {
+  player.y--;
   draw()
   // drawPlayer(player.x, player.y - 1)
 }
 
 function moveDown() {
+  player.y++;
   draw()
   // drawPlayer(player.x, player.y + 1)
 }
 
 function moveLeft() {
+  player.x--;
   draw()
   // drawPlayer(player.x - 1, player.y)
 }
 
 function moveRight() {
+  player.x++;
   draw()
   // drawPlayer(player.x + 1, player.y)
 }
