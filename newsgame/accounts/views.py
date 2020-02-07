@@ -9,3 +9,4 @@ class SignUp(generic.CreateView):
     template_name = 'signup.html'
 
 
+
