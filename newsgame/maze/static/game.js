@@ -90,10 +90,11 @@ function draw() {
 // w 87
 
 function moveUp() {
-  // if (checkCollision(player.x, player.y--)) {
+  // if (moveIsLegal(player.x, player.y--)) {
     player.y--;
+    draw()
+    // drawPlayer(player.x, player.y)
   // }
-  draw()
   // drawPlayer(player.x, player.y - 1)
 }
 
@@ -115,21 +116,22 @@ function moveRight() {
   // drawPlayer(player.x + 1, player.y)
 }
 
-function checkCollision(newX, newY) {
+function moveIsLegal(newX, newY) {
   // if newX, newY compared to board[newX][newY] is a wall, return true for collision
-  if (grid[newY][newX] == 1) {
-    return true
-  }
+  // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
+  // console.log(`newX: ${newX}, newY: ${newY}`)
+  if (grid[newY][newX] != 1) return true
+  else return false
 }
 
 function startGame() {
-  draw()
-  window.addEventListener('keydown', e => {
-    if (e.keyCode == 87) moveUp()
-    else if (e.keyCode == 83) moveDown()
-    else if (e.keyCode == 65) moveLeft()
-    else if (e.keyCode == 68) moveRight()
+  document.addEventListener('keydown', e => {
+    if (e.keyCode == 87 && moveIsLegal(player.x, (player.y - 1))) moveUp()
+    else if (e.keyCode == 83 && moveIsLegal(player.x, (player.y + 1))) moveDown()
+    else if (e.keyCode == 65 && moveIsLegal((player.x - 1), player.y)) moveLeft()
+    else if (e.keyCode == 68 && moveIsLegal((player.x + 1), player.y)) moveRight()
   })
+  draw()
 }
 
 startGame()
