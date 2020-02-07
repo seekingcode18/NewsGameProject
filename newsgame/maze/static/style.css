@@ -14,3 +14,12 @@ canvas {
   font-weight: bold;
   margin-top: 1rem;
 }
+.console {
+  padding: 2rem;
+  font-size: 1.25rem;
+  font-family: monospace;
+  background: #ccc;
+  width: 30%;
+  font-weight: bold;
+  margin-top: 1rem;
+}
