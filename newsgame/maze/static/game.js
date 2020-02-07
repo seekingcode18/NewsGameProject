@@ -1,5 +1,7 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
+const startingPos = [8,8]
+
 grid = [
   [1,1,1,1,1,1,1,1,1,1],
   [1,2,0,0,0,0,0,1,2,1],
@@ -14,8 +16,8 @@ grid = [
 ]
 
 let player = {
-  x: 0,
-  y: 0
+  x: startingPos[0],
+  y: startingPos[1]
 }
 
 const width = canvas.width;
@@ -28,20 +30,15 @@ document.querySelector('div').appendChild(p)
 
 function drawWall(posX, posY) {
   ctx.beginPath();
-  ctx.rect(posX * blockWidth,posY * blockWidth,blockWidth,blockWidth);
+  ctx.rect(posX * blockWidth, posY * blockWidth, blockWidth, blockWidth);
   ctx.fillStyle = 'black';
   ctx.fill();
   ctx.closePath();
 }
 
-function drawBlank(posX, posY) {
-  ctx.beginPath();
-  ctx.rect()
-}
-
 function drawNPC(posX, posY) {
   ctx.beginPath();
-  ctx.rect(posX * blockWidth,posY * blockWidth,blockWidth,blockWidth);
+  ctx.rect(posX * blockWidth, posY * blockWidth, blockWidth, blockWidth);
   ctx.fillStyle = '#4a9cc2';
   ctx.fill();
   ctx.closePath();
@@ -57,7 +54,6 @@ function drawPlayer(posX, posY) {
   ctx.closePath();
   player.x = posX;
   player.y = posY;
-  console.log('player after', player)
 }
 
 function drawExit(posX, posY) {
@@ -69,6 +65,9 @@ function drawExit(posX, posY) {
 }
 
 function draw() {
+  // clear before redraw
+  console.log('draw()')
+  ctx.clearRect(0,0,canvas.width,canvas.height)
   // loop through array on y axis and draw blocks
   for (y = 0; y < grid.length; y++) {
   //   loop through each subarray for x axis
@@ -78,39 +77,41 @@ function draw() {
         drawWall(x,y)
       } else if (grid[y][x] == 2) {
         drawNPC(x,y)
-      } else if (grid[y][x] == 3) {
-        drawPlayer(x,y)
+      // } else if (grid[y][x] == 3) {
+      //   drawPlayer(x,y)
       } else if (grid[y][x] == 4) {
         drawExit(x,y)
       }
     }
   }
-  // drawPlayer(8,8)
+  drawPlayer(player.x, player.y)
 }
 
 // w 87
 
 function moveUp() {
-  drawPlayer(player.x, player.y - 1)
+  draw()
+  // drawPlayer(player.x, player.y - 1)
 }
 
-
 function moveDown() {
-  drawPlayer(player.x, player.y + 1)
+  draw()
+  // drawPlayer(player.x, player.y + 1)
 }
 
 function moveLeft() {
-  drawPlayer(player.x - 1, player.y)
+  draw()
+  // drawPlayer(player.x - 1, player.y)
 }
 
 function moveRight() {
-  drawPlayer(player.x + 1, player.y)
+  draw()
+  // drawPlayer(player.x + 1, player.y)
 }
 
 function startGame() {
   draw()
   window.addEventListener('keydown', e => {
-    console.log('pressed key' + e.keyCode)
     if (e.keyCode == 87) moveUp()
     else if (e.keyCode == 83) moveDown()
     else if (e.keyCode == 65) moveLeft()
