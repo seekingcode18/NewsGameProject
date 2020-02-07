@@ -90,7 +90,9 @@ function draw() {
 // w 87
 
 function moveUp() {
-  player.y--;
+  // if (checkCollision(player.x, player.y--)) {
+    player.y--;
+  // }
   draw()
   // drawPlayer(player.x, player.y - 1)
 }
@@ -111,6 +113,13 @@ function moveRight() {
   player.x++;
   draw()
   // drawPlayer(player.x + 1, player.y)
+}
+
+function checkCollision(newX, newY) {
+  // if newX, newY compared to board[newX][newY] is a wall, return true for collision
+  if (grid[newY][newX] == 1) {
+    return true
+  }
 }
 
 function startGame() {
