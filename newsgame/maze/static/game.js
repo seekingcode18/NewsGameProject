@@ -3,6 +3,10 @@ const ctx = canvas.getContext('2d');
 const startingPos = [8, 8];
 let headlines = ['test headline 1', 'test headline 2', 'test headline 3']
 
+// set up output to display the news and other game info
+const outputBox = document.querySelector('.output');
+const headlineToDisplay = document.createElement('p')
+
 // 0 = blank space
 // 1 = wall
 // 2 = player spawn point
@@ -30,10 +34,9 @@ let player = {
 const width = canvas.width;
 const blockWidth = canvas.width / grid.length;
 
-// console
-const p = document.createElement('p');
-p.innerHTML = `Width: ${width}, Block Width: ${blockWidth}`;
-document.querySelector('div').appendChild(p);
+// everything breaks without these 2 lines and I don't know why
+// const p = document.createElement('p');
+// document.querySelector('div').appendChild(p);
 
 function drawWall(posX, posY) {
   ctx.beginPath();
@@ -101,13 +104,23 @@ function draw() {
 
   drawPlayer(player.x, player.y);
 
+  // clear the output box
+  while (outputBox.lastChild) {
+    outputBox.removeChild(outputBox.lastChild);
+  }
+
   // check whether to show the news
   let currentLocationValue = grid[player.y][player.x]
   if ([5,6,7,8,9].includes(currentLocationValue)) {
-    console.log(headlines[currentLocationValue - 5])
+    // show relevant headline in output box
+    headlineToDisplay.innerHTML = headlines[currentLocationValue - 5]
+    outputBox.appendChild(headlineToDisplay);
   }
 
+  // exit when player is on exit block
   if (currentLocationValue == 3) console.log('exit')
+
+
 }
 
 function moveUp() {
@@ -135,11 +148,6 @@ function showNews() {
     return null
   }
 }
-
-// output
-const div = document.createElement('div');
-p.innerHTML = `Width: ${width}, Block Width: ${blockWidth}`;
-document.querySelector('.output').appendChild(div);
 
 function moveIsLegal(newX, newY) {
   // if newX, newY compared to board[newX][newY] is a wall, return true for collision

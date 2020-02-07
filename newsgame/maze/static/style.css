@@ -9,16 +9,16 @@ canvas {
   padding: 2rem;
   font-size: 1.25rem;
   font-family: monospace;
-  background: #ccc;
+  background: #ddd;
   width: 30%;
   font-weight: bold;
   margin-top: 1rem;
 }
-.console {
+.output {
   padding: 2rem;
   font-size: 1.25rem;
   font-family: monospace;
-  background: #ccc;
+  background: #eee;
   width: 30%;
   font-weight: bold;
   margin-top: 1rem;
