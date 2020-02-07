@@ -157,9 +157,13 @@ function draw() {
     linkToArticle.target = '_blank'
     linkToArticle.id = `headline-${currentLocationValue - 5}`
     linkToArticle.classList.add('headline-link');
-    linkToArticle.onclick = scoreHandler();
     linkToArticle.innerHTML = headlines[currentLocationValue - 5].title;
     headlineToDisplay.appendChild(linkToArticle);
+    headlineToDisplay.addEventListener('click', e => {
+      // score += 5;
+      // console.log('test')
+      scoreHandler();
+    })
     outputBox.appendChild(headlineToDisplay);
   }
 
@@ -171,9 +175,9 @@ function draw() {
 function scoreHandler() {
   // let headlineLink = document.querySelector('.headline-link');
   // console.log(headlineLink)
-  // score++;
+  score += 5;
   console.log(score)
-  // document.getElementById('#scoreBox').innerHTML = `Score (from js) - ${score}`
+  document.getElementById('scoreBox').innerHTML = `Score (from js) - ${score}`
 }
 
 
