@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'maze',
 ]
+
+#IF SIGNUP BREAKS IN THE FUTURE, IT IS THE ACCOUNTS BIT IN 'INSTALLED_APPS'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
