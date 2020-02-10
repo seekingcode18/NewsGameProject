@@ -3,5 +3,5 @@ from users import views
 from users.views import index
 
 urlpatterns = [
-    path('', views.index, name='home'),
+    path('', views.index),
 ]
