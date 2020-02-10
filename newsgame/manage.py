@@ -6,28 +6,30 @@ import sys
 # scraping
 import requests
 from bs4 import BeautifulSoup
-from csv import writer
+import json
 
-response = requests.get('https://news.sky.com/')
+# response = requests.get('https://news.sky.com/')
+response = requests.get('https://www.bbc.co.uk/news/newsbeat')
 
 soup = BeautifulSoup(response.text, 'html.parser')
 
-results = soup.find_all(class_ = 'sdc-site-tile__headline-link')
+# results = soup.find_all(class_ = 'sdc-site-tile__headline-link')
+results = soup.find_all(class_ = 'gs-c-promo-heading')
 headlines = []
 
 for result in results:
     # print(str(headline))
     headline_obj = {}
     # headline_obj['title'] = str(result.get_text())
-    headline_obj['title'] = str(result.span.string)
-    headline_obj['url'] = str(result['href'])
+    headline_obj['title'] = str(result.h3.get_text())
+    headline_obj['url'] = 'https://www.bbc.co.uk' + str(result['href'])
     # print(headline_obj)
     headlines.append(headline_obj)
 
 print(headlines)
 
-with open('headlines.json', 'w') as f:
-    f.write(str(headlines))
+with open('headlines.json', 'w', encoding='utf-8') as f:
+    f.write(json.dumps(headlines))
 
 
 # # BBC Newsbeats
