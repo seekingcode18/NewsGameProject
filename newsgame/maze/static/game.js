@@ -1,6 +1,13 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
-const playerSpawnLocation = [8, 8];
+const playerSpawnLocation = [8, 1];
+
+// let grid = require('./levels/level01');
+// import level01 from './levels/level01';
+// console.log(level01)
+// let grid = level01
+// console.log(grid)
+// console.log(canvas)
 
 // news API
 const url = 'https://newsapi.org/v2/top-headlines?' +
@@ -35,16 +42,31 @@ const linkToArticle = document.createElement('a');
 // 3 = exit
 // 5 through 9 = NPCs delivering news
 
+// 1 - spawn 8,8
+// grid = [
+//   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+//   [1, 6, 0, 0, 0, 0, 0, 1, 5, 1],
+//   [1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
+//   [1, 1, 0, 0, 0, 1, 0, 0, 0, 1],
+//   [1, 0, 0, 1, 0, 1, 1, 1, 0, 1],
+//   [1, 0, 1, 1, 0, 0, 0, 1, 0, 1],
+//   [1, 0, 0, 1, 1, 1, 0, 1, 0, 1],
+//   [1, 1, 0, 1, 7, 1, 0, 1, 0, 1],
+//   [1, 3, 0, 0, 0, 0, 0, 1, 2, 1],
+//   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+// ];
+
+// 2 - spawn 8,1
 grid = [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  [1, 6, 0, 0, 0, 0, 0, 1, 5, 1],
-  [1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
-  [1, 1, 0, 0, 0, 1, 0, 0, 0, 1],
-  [1, 0, 0, 1, 0, 1, 1, 1, 0, 1],
-  [1, 0, 1, 1, 0, 0, 0, 1, 0, 1],
-  [1, 0, 0, 1, 1, 1, 0, 1, 0, 1],
-  [1, 1, 0, 1, 7, 1, 0, 1, 0, 1],
-  [1, 3, 0, 0, 0, 0, 0, 1, 2, 1],
+  [1, 0, 3, 1, 5, 0, 0, 1, 2, 1],
+  [1, 0, 1, 1, 1, 1, 0, 1, 0, 1],
+  [1, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+  [1, 1, 9, 1, 0, 1, 0, 1, 1, 1],
+  [1, 1, 1, 1, 0, 1, 0, 0, 0, 1],
+  [1, 0, 0, 0, 0, 1, 0, 1, 0, 1],
+  [1, 8, 1, 1, 1, 1, 0, 1, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 0, 6, 1],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
@@ -156,6 +178,13 @@ function scoreHandler(currentLocationValue) {
   headlines[currentLocationValue].clicked = true
 }
 
+function displayScore() {
+  const scoreBox = document.querySelector('.scoreBox');
+  const scoreElem = document.createElement('p')
+  scoreElem.innerHTML = `Score (from js) - ${score}`
+  scoreElem.id = 'scoreBox'
+  scoreBox.appendChild(scoreElem)
+}
 
 function moveUp() {
   player.y--;
@@ -200,11 +229,7 @@ function startGame() {
     else if (e.keyCode == 68 && moveIsLegal(player.x + 1, player.y))
       moveRight();
   });
-  const scoreBox = document.querySelector('.scoreBox');
-  const scoreElem = document.createElement('p')
-  scoreElem.innerHTML = `Score (from js) - ${score}`
-  scoreElem.id = 'scoreBox'
-  scoreBox.appendChild(scoreElem)
+  displayScore();
 }
 
 startGame();
