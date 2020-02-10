@@ -5,8 +5,8 @@ from django.db import models
 
 class CustomUser(AbstractUser):
     pass
-    points = models.IntegerField(blank=True)
-    level = models.IntegerField(blank=True)
+    points = models.IntegerField(null=True)
+    level = models.IntegerField(null=True)
 
     def __str__(self):
         return self.username
