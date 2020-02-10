@@ -5,9 +5,32 @@
     <p>Hi {{user.username}}</p>
     <p>points: {{user.points}}</p>
     <a href="{% url 'logout'%}">log out</a>
+    <div class="maze-container">
+        <canvas height="400" width="400"></canvas>
+        <div class="output"></div>
+        <div class="scoreBox"></div>
+    </div>
+{% load static %}
+<script src="{% static 'game.js' %}" type="text/javascript" type="module"></script>
+
+    <form action='127.0.0.1:8000/users/update/' method='post'>
+        {% csrf_token %}
+        <input type='text' name='points' placeholder='add points'></input>
+        <button type='submit'>Add Points</button>
+    </form>
+    
 {% else %}
     <p>You don't appear to be logged in</p>
     <a href="{% url 'login'%}">login</a>
     <a href="{% url 'signup'%}">signup</a>
+
+    <div class="maze-container">
+        <canvas height="400" width="400"></canvas>
+        <div class="output"></div>
+        <div class="scoreBox"></div>
+    </div>
+{% load static %}
+<script src="{% static 'game.js' %}" type="text/javascript" type="module"></script>
+
 {% endif %}
 {% endblock content %}

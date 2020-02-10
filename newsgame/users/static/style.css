@@ -1,0 +1,44 @@
+body {
+    background: #cbcbcb;
+  }
+  canvas {
+    border: 1px black solid;
+    background: #eeeeee;
+  }
+  .console {
+    padding: 2rem;
+    font-size: 1.25rem;
+    font-family: monospace;
+    background: #ddd;
+    width: 30%;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  .output {
+    padding: 2rem;
+    font-size: 1.25rem;
+    font-family: monospace;
+    background: #eee;
+    width: 30%;
+    font-weight: bold;
+    margin-top: 1rem;
+    min-height: 80px;
+  }
+  .output > * {
+    margin: 0;
+    padding: 0;
+  }
+  .scoreBox {
+    padding: 1rem;
+    font-size: 1.25rem;
+    font-family: sans-serif;
+    background: #98e2f8;
+    width: 15%;
+    font-weight: bold;
+    margin-top: 1rem;
+    min-height: 40px;
+  }
+  .scoreBox > * {
+    margin: 0;
+    padding: 0;
+  }
