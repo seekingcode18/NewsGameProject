@@ -17,12 +17,7 @@
 
 {% load static %}
 <script src="{% static 'game.js' %}" type="text/javascript" type="module"></script>
-
-    <form action='127.0.0.1:8000/users/update/' method='post'>
-        {% csrf_token %}
-        <input type='text' name='points' placeholder='add points'></input>
-        <button type='submit'>Add Points</button>
-    </form>
+<script src="{% static '.js' %}" type="text/javascript" type="module"></script>
     
 {% else %}
     <p>You don't appear to be logged in</p>
