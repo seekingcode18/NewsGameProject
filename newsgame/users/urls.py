@@ -5,5 +5,7 @@ from users.views import index
 urlpatterns = [
     path('', views.index),
     path('signup/', views.SignUp.as_view(), name='signup'),
-    path('update/', views.update, name='update'),
+    path('world/', views.world, name='world'),
+    path('level01/', views.level01, name='level01'),
+    path('level02/', views.level02, name='level02'),
 ]

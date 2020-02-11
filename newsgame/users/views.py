@@ -12,17 +12,19 @@ from users.forms import CustomUserCreationForm, CustomUserChangeForm
 def index(request):
     return render(request, 'home.html')
 
+def world(request):
+    return render(request, 'world.html')
+
+def level01(request):
+    return render(request, 'level01.html')
+    
+def level02(request):
+    return render(request, 'level02.html')
+
 class SignUp(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
-
-def update(request):
-    points = request.POST.get('points')
-    user = CustomUser(id=1)
-    user.points = points
-    user.save()
-    return render(request, 'home.html')
 
 # query the db for all users
 class UserViewSet(viewsets.ModelViewSet):
