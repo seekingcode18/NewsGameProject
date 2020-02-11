@@ -29,6 +29,19 @@ fetch(req)
 
 let score = 0;
 
+// document.querySelector("#points");
+let points = Number(document.querySelector("#points").innerHTML);
+// console.log(points)
+// const newPoints = Number(points) + 5
+// console.log(newPoints)
+// document.querySelector("#points").innerHTML = String(newPoints);
+// console.log(document.querySelector("#points"));
+
+const username = document.querySelector("#username").innerHTML;
+const id = document.querySelector("#id").value;
+// for JSON form when making PUT request 
+//^ Using XML HTTP request
+
 // set up output to display the news and other game info
 const outputBox = document.querySelector('.output');
 
@@ -165,14 +178,28 @@ function draw() {
 
 
   // exit when player is on exit block
-  if (currentLocationValue == 3) console.log('exit');
+  if (currentLocationValue == 3) {
+    fetch(`http://127.0.0.1:8000/user/${id}/`, {
+      headers: {"Content-Type": "application/json; charset=utf-8", 
+      "X-CSRFToken": document.querySelector("#csrf").value
+    },
+      method: 'PUT',
+      body: JSON.stringify({
+        username: username,
+        points: points
+      })
+    }) 
+    console.log('exit')
+  };
 }
 
 function scoreHandler(currentLocationValue) {
   // only increase score for the first time player clicks a particular headline
   if (headlines[currentLocationValue].clicked == false) {
     score += 5;
+    points += 5;
     console.log(score)
+    document.querySelector("#points").innerHTML = points;
     document.getElementById('scoreBox').innerHTML = `Score (from js) - ${score}`
   }
   headlines[currentLocationValue].clicked = true
@@ -233,3 +260,4 @@ function startGame() {
 }
 
 startGame();
+

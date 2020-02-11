@@ -2,8 +2,10 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-    <p>Hi {{user.username}}</p>
-    <p>points: {{user.points}}</p>
+    <p>Hi <span id="username">{{user.username}}</span></p>
+    <p>points: <span id="points">{{user.points}}</span></p>
+    <input type="hidden" id="id" value={{user.id}}>
+    <input type="hidden" id="csrf" value={{csrf_token}}>
     <a href="{% url 'logout'%}">log out</a>
     <div class="maze-container">
         <canvas height="400" width="400"></canvas>
