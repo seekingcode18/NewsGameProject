@@ -6,7 +6,7 @@
     <form method='post'>
         {% csrf_token %}
         {{ form.as_p }}
-        SOME FORM OF AGE VERIFICATION<input type='checkbox' required></input>
+        SOME FORM OF AGE VERIFICATION <input type='checkbox' required></input><br>
         <button type='submit'>Sign Up</button>
     </form>
 {% endblock content %}
