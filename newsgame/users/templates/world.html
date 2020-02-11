@@ -9,9 +9,9 @@
     <ul>
         <li><a href="{% url 'level01' %}">level 01</a></li>
         <li><a href="{% url 'level02' %}">level 02</a></li>
-        <li><a href="#">level 03</a></li>
+        <li><a href="{% url 'level03' %}">level 03</a></li>
     </ul>
-    
+
 {% else %}
     <p>You don't appear to be logged in</p>
     <a href="{% url 'login'%}">login</a>
