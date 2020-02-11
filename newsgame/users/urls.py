@@ -8,4 +8,5 @@ urlpatterns = [
     path('world/', views.world, name='world'),
     path('level01/', views.level01, name='level01'),
     path('level02/', views.level02, name='level02'),
+    path('level03/', views.level03, name='level03'),
 ]

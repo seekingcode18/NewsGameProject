@@ -39,7 +39,7 @@ let points = Number(document.querySelector("#points").innerHTML);
 
 const username = document.querySelector("#username").innerHTML;
 const id = document.querySelector("#id").value;
-// for JSON form when making PUT request 
+// for JSON form when making PUT request
 //^ Using XML HTTP request
 
 // set up output to display the news and other game info
@@ -89,7 +89,7 @@ let player = {
 };
 
 const width = canvas.width;
-const blockWidth = canvas.width / grid.length;
+const blockWidth = canvas.width / grid[0].length;
 
 function drawWall(posX, posY) {
   ctx.beginPath();
@@ -180,7 +180,7 @@ function draw() {
   // exit when player is on exit block
   if (currentLocationValue == 3) {
     fetch(`http://127.0.0.1:8000/user/${id}/`, {
-      headers: {"Content-Type": "application/json; charset=utf-8", 
+      headers: {"Content-Type": "application/json; charset=utf-8",
       "X-CSRFToken": document.querySelector("#csrf").value
     },
       method: 'PUT',
@@ -188,7 +188,7 @@ function draw() {
         username: username,
         points: points
       })
-    }) 
+    })
     console.log('exit')
   };
 }
