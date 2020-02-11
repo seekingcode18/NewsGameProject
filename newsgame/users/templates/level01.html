@@ -9,7 +9,7 @@
     <a href="{% url 'logout'%}">log out</a>
     <a href="{% url 'world'%}">Home</a>
     <div class="maze-container">
-        <canvas height="400" width="400"></canvas>
+        <canvas height="300" width="400"></canvas>
         <div class="output"></div>
         <div class="scoreBox"></div>
     </div>
@@ -23,7 +23,7 @@
         <input type='text' name='points' placeholder='add points'></input>
         <button type='submit'>Add Points</button>
     </form>
-    
+
 {% else %}
     <p>You don't appear to be logged in</p>
     <a href="{% url 'login'%}">login</a>

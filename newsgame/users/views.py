@@ -17,9 +17,12 @@ def world(request):
 
 def level01(request):
     return render(request, 'level01.html')
-    
+
 def level02(request):
     return render(request, 'level02.html')
+
+def level03(request):
+    return render(request, 'level03.html')
 
 class SignUp(CreateView):
     form_class = CustomUserCreationForm

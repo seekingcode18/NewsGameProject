@@ -76,7 +76,7 @@ let points = Number(document.querySelector("#points").innerHTML);
 
 const username = document.querySelector("#username").innerHTML;
 const id = document.querySelector("#id").value;
-// for JSON form when making PUT request 
+// for JSON form when making PUT request
 //^ Using XML HTTP request
 
 // set up output to display the news and other game info
@@ -126,12 +126,20 @@ let player = {
 };
 
 const width = canvas.width;
-const blockWidth = canvas.width / grid.length;
+const blockWidth = canvas.width / grid[0].length;
 
 function drawWall(posX, posY) {
   ctx.beginPath();
   ctx.rect(posX * blockWidth, posY * blockWidth, blockWidth, blockWidth);
   ctx.fillStyle = 'black';
+  ctx.fill();
+  ctx.closePath();
+}
+
+function drawLevelEntrance(posX, posY) {
+  ctx.beginPath();
+  ctx.rect(posX * blockWidth, posY * blockWidth, blockWidth, blockWidth);
+  ctx.fillStyle = 'orange';
   ctx.fill();
   ctx.closePath();
 }
@@ -177,56 +185,147 @@ function drawText() {
 // window.requestAnimationFrame(draw);
 
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawFrame(cycleLoop[currentLoopIndex], currentDirection, 0, 0);
-    currentLoopIndex++;
-    if (currentLoopIndex >= cycleLoop.length) {
-      currentLoopIndex = 0
+  // clear before redraw
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawFrame(cycleLoop[currentLoopIndex], currentDirection, 0, 0);
+  currentLoopIndex++;
+  if (currentLoopIndex >= cycleLoop.length) {
+    currentLoopIndex = 0
+  }
+  // loop through array on y axis and draw blocks
+  for (y = 0; y < grid.length; y++) {
+    //   loop through each subarray for x axis
+    for (x = 0; x < grid[y].length; x++) {
+      //     if 1, draw wall
+      if (grid[y][x] == 1) {
+        drawWall(x, y);
+      } else if ([5, 6, 7, 8, 9].includes(grid[y][x])) {
+        drawNPC(x, y);
+        // } else if (grid[y][x] == 3) {
+        //   drawPlayer(x,y)
+      } else if (grid[y][x] == 3) {
+        drawExit(x, y);
+      } else if (['a', 'b', 'c', 'd', 'e'].includes(grid[y][x])) {
+        drawLevelEntrance(x, y)
+      }
     }
-    // window.requestAnimationFrame(draw);
-    // loop through array on y axis and draw blocks
-    for (y = 0; y < grid.length; y++) {
-      //   loop through each subarray for x axis
-      for (x = 0; x < grid[y].length; x++) {
-        //     if 1, draw wall
-        if (grid[y][x] == 1) {
-          drawWall(x, y);
-        } else if ([5, 6, 7, 8, 9].includes(grid[y][x])) {
-          drawNPC(x, y);
-          // } else if (grid[y][x] == 3) {
-            //   drawPlayer(x,y)
-          } else if (grid[y][x] == 3) {
-            drawExit(x, y);
-          }
-        }
-      }
-      
-      
-      
-      drawPlayer(player.x, player.y);
-      
-      // clear the output box when the player is not on top of it
-      while (outputBox.lastChild) {
-        outputBox.removeChild(outputBox.lastChild);
-      }
-      
-      // check whether to show the news
-      let currentLocationValue = grid[player.y][player.x];
-      if ([5, 6, 7, 8, 9].includes(currentLocationValue)) {
-        // show relevant headline in output box
-        linkToArticle.href = headlines[currentLocationValue - 5].url;
-        linkToArticle.target = '_blank'
-        linkToArticle.id = `headline-${currentLocationValue - 5}`
-        linkToArticle.classList.add('headline-link');
-        linkToArticle.innerHTML = headlines[currentLocationValue - 5].title;
-        headlineToDisplay.appendChild(linkToArticle);
-        headlineToDisplay.addEventListener('click', e => scoreHandler(currentLocationValue));
-        outputBox.appendChild(headlineToDisplay);
-      }
-      
-      
-      // exit when player is on exit block
-      if (currentLocationValue == 3) console.log('exit');
+  }
+
+  drawPlayer(player.x, player.y);
+
+  // clear the output box when the player is not on top of it
+  while (outputBox.lastChild) {
+    outputBox.removeChild(outputBox.lastChild);
+  }
+
+  // check whether to show the news
+  let currentLocationValue = grid[player.y][player.x];
+  if ([5, 6, 7, 8, 9].includes(currentLocationValue)) {
+    // show relevant headline in output box
+    linkToArticle.href = headlines[currentLocationValue - 5].url;
+    linkToArticle.target = '_blank'
+    linkToArticle.id = `headline-${currentLocationValue - 5}`
+    linkToArticle.classList.add('headline-link');
+    linkToArticle.innerHTML = headlines[currentLocationValue - 5].title;
+    headlineToDisplay.appendChild(linkToArticle);
+    headlineToDisplay.addEventListener('click', e => scoreHandler(currentLocationValue));
+    outputBox.appendChild(headlineToDisplay);
+  }
+
+  // check whether player has run into level entrance
+  if (['a', 'b', 'c', 'd', 'e'].includes(currentLocationValue)) {
+    if (currentLocationValue == 'a') {
+      window.open("http://127.0.0.1:8000/level01/","_self")
+    } else if (currentLocationValue == 'b') {
+      window.open("http://127.0.0.1:8000/level02/","_self")
+    } else if (currentLocationValue == 'c') {
+      window.open("http://127.0.0.1:8000/level03/","_self")
+    } else if (currentLocationValue == 'd') {
+      console.log('level 4 coming soon')
+      // window.open("http://127.0.0.1:8000/level04/","_self")
+    }
+  }
+
+  // exit when player is on exit block
+  if (currentLocationValue == 3) {
+    fetch(`http://127.0.0.1:8000/user/${id}/`, {
+      headers: {"Content-Type": "application/json; charset=utf-8",
+      "X-CSRFToken": document.querySelector("#csrf").value
+    },
+      method: 'PUT',
+      body: JSON.stringify({
+        username: username,
+        points: points
+      })
+    })
+    console.log('exit')
+  };
+}
+
+function scoreHandler(currentLocationValue) {
+  // only increase score for the first time player clicks a particular headline
+  if (headlines[currentLocationValue].clicked == false) {
+    score += 5;
+    points += 5;
+    console.log(score)
+    document.querySelector("#points").innerHTML = points;
+    document.getElementById('scoreBox').innerHTML = `Score (from js) - ${score}`
+  }
+  headlines[currentLocationValue].clicked = true
+}
+
+function displayScore() {
+  const scoreBox = document.querySelector('.scoreBox');
+  const scoreElem = document.createElement('p')
+  scoreElem.innerHTML = `Score (from js) - ${score}`
+  scoreElem.id = 'scoreBox'
+  scoreBox.appendChild(scoreElem)
+}
+
+function moveUp() {
+  player.y--;
+  draw();
+}
+
+function moveDown() {
+  player.y++;
+  draw();
+}
+
+function moveLeft() {
+  player.x--;
+  draw();
+}
+
+function moveRight() {
+  player.x++;
+  draw();
+}
+
+function showNews() {
+  if (player.x) {
+    return null;
+  }
+}
+
+function moveIsLegal(newX, newY) {
+  // if newX, newY compared to board[newX][newY] is a wall, return true for collision
+  if (grid[newY][newX] != 1) return true;
+  else return false;
+  // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
+  // console.log(`newX: ${newX}, newY: ${newY}`)
+}
+
+function startGame() {
+  draw();
+  document.addEventListener('keydown', e => {
+    if (e.keyCode == 87 && moveIsLegal(player.x, player.y - 1)) moveUp();
+    else if (e.keyCode == 83 && moveIsLegal(player.x, player.y + 1)) moveDown();
+    else if (e.keyCode == 65 && moveIsLegal(player.x - 1, player.y)) moveLeft();
+    else if (e.keyCode == 68 && moveIsLegal(player.x + 1, player.y))
+      moveRight();
+  });
+  displayScore();
 }
     
     function scoreHandler(currentLocationValue) {
