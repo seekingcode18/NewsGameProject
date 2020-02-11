@@ -187,11 +187,6 @@ function drawText() {
 function draw() {
   // clear before redraw
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawFrame(cycleLoop[currentLoopIndex], currentDirection, 0, 0);
-  currentLoopIndex++;
-  if (currentLoopIndex >= cycleLoop.length) {
-    currentLoopIndex = 0
-  }
   // loop through array on y axis and draw blocks
   for (y = 0; y < grid.length; y++) {
     //   loop through each subarray for x axis
@@ -202,15 +197,20 @@ function draw() {
       } else if ([5, 6, 7, 8, 9].includes(grid[y][x])) {
         drawNPC(x, y);
         // } else if (grid[y][x] == 3) {
-        //   drawPlayer(x,y)
-      } else if (grid[y][x] == 3) {
-        drawExit(x, y);
-      } else if (['a', 'b', 'c', 'd', 'e'].includes(grid[y][x])) {
-        drawLevelEntrance(x, y)
+          //   drawPlayer(x,y)
+        } else if (grid[y][x] == 3) {
+          drawExit(x, y);
+        } else if (['a', 'b', 'c', 'd', 'e'].includes(grid[y][x])) {
+          drawLevelEntrance(x, y)
+        }
       }
     }
-  }
 
+    drawFrame(cycleLoop[currentLoopIndex], currentDirection, 0, 0);
+    currentLoopIndex++;
+    if (currentLoopIndex >= cycleLoop.length) {
+      currentLoopIndex = 0
+    }
   drawPlayer(player.x, player.y);
 
   // clear the output box when the player is not on top of it
