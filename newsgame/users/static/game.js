@@ -20,7 +20,7 @@ const spriteSHeight = spriteScale * spriteHeight;
 
 function drawFrame(frameX, frameY, canvasX, canvasY) {
   ctx.drawImage(sprite,
-               frameX * spriteWidth, frameY * spriteHeight, spriteWidth,                
+               frameX * spriteWidth, frameY * spriteHeight, spriteWidth,
                spriteHeight, player.x * blockWidth, player.y * blockWidth, spriteSWidth, spriteSHeight);
 }                       //    ^         ^ to alter coordinates!
 
@@ -232,7 +232,7 @@ function draw() {
     outputBox.appendChild(headlineToDisplay);
   }
 
-  // check whether player has run into level entrance
+  // on world map, check whether player has run into level entrance
   if (['a', 'b', 'c', 'd', 'e'].includes(currentLocationValue)) {
     if (currentLocationValue == 'a') {
       window.open("http://127.0.0.1:8000/level01/","_self")
@@ -241,7 +241,9 @@ function draw() {
     } else if (currentLocationValue == 'c') {
       window.open("http://127.0.0.1:8000/level03/","_self")
     } else if (currentLocationValue == 'd') {
-      console.log('level 4 coming soon')
+      const p = document.createElement('p');
+      p.innerHTML = 'Level 4 coming soon...'
+      outputBox.appendChild(p)
       // window.open("http://127.0.0.1:8000/level04/","_self")
     }
   }
@@ -252,14 +254,15 @@ function draw() {
       headers: {"Content-Type": "application/json; charset=utf-8",
       "X-CSRFToken": document.querySelector("#csrf").value
     },
-      method: 'PUT',
-      body: JSON.stringify({
-        username: username,
-        points: points
-      })
+    method: 'PUT',
+    body: JSON.stringify({
+      username: username,
+      points: points
     })
-    console.log('exit')
-  };
+  })
+  console.log('exit')
+  // window.open("http://127.0.0.1:8000/world/","_self")
+};
 }
 
 function scoreHandler(currentLocationValue) {
@@ -267,9 +270,9 @@ function scoreHandler(currentLocationValue) {
   if (headlines[currentLocationValue].clicked == false) {
     score += 5;
     points += 5;
-    console.log(score)
+    console.log(points)
     document.querySelector("#points").innerHTML = points;
-    document.getElementById('scoreBox').innerHTML = `Score (from js) - ${score}`
+    // document.getElementById('scoreBox').innerHTML = `Score (from js) - ${score}`
   }
   headlines[currentLocationValue].clicked = true
 }
@@ -282,25 +285,25 @@ function displayScore() {
   scoreBox.appendChild(scoreElem)
 }
 
-function moveUp() {
-  player.y--;
-  draw();
-}
+// function moveUp() {
+//   player.y--;
+//   draw();
+// }
 
-function moveDown() {
-  player.y++;
-  draw();
-}
+// function moveDown() {
+//   player.y++;
+//   draw();
+// }
 
-function moveLeft() {
-  player.x--;
-  draw();
-}
+// function moveLeft() {
+//   player.x--;
+//   draw();
+// }
 
-function moveRight() {
-  player.x++;
-  draw();
-}
+// function moveRight() {
+//   player.x++;
+//   draw();
+// }
 
 function showNews() {
   if (player.x) {
@@ -308,13 +311,13 @@ function showNews() {
   }
 }
 
-function moveIsLegal(newX, newY) {
-  // if newX, newY compared to board[newX][newY] is a wall, return true for collision
-  if (grid[newY][newX] != 1) return true;
-  else return false;
-  // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
-  // console.log(`newX: ${newX}, newY: ${newY}`)
-}
+// function moveIsLegal(newX, newY) {
+//   // if newX, newY compared to board[newX][newY] is a wall, return true for collision
+//   if (grid[newY][newX] != 1) return true;
+//   else return false;
+//   // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
+//   // console.log(`newX: ${newX}, newY: ${newY}`)
+// }
 
 function startGame() {
   draw();
@@ -327,55 +330,55 @@ function startGame() {
   });
   displayScore();
 }
-    
-    function scoreHandler(currentLocationValue) {
-      // only increase score for the first time player clicks a particular headline
-      if (headlines[currentLocationValue].clicked == false) {
-        score += 5;
-        console.log(score)
-        document.getElementById('scoreBox').innerHTML = `Score (from js) - ${score}`
-      }
-      headlines[currentLocationValue].clicked = true
-    }
-    
-    function displayScore() {
-      const scoreBox = document.querySelector('.scoreBox');
-      const scoreElem = document.createElement('p')
-      scoreElem.innerHTML = `Score (from js) - ${score}`
-      scoreElem.id = 'scoreBox'
-      scoreBox.appendChild(scoreElem)
-    }
-    
+
+    // function scoreHandler(currentLocationValue) {
+    //   // only increase score for the first time player clicks a particular headline
+    //   if (headlines[currentLocationValue].clicked == false) {
+    //     score += 5;
+    //     console.log(score)
+    //     document.getElementById('scoreBox').innerHTML = `Score (from js) - ${score}`
+    //   }
+    //   headlines[currentLocationValue].clicked = true
+    // }
+
+    // function displayScore() {
+    //   const scoreBox = document.querySelector('.scoreBox');
+    //   const scoreElem = document.createElement('p')
+    //   scoreElem.innerHTML = `Score (from js) - ${score}`
+    //   scoreElem.id = 'scoreBox'
+    //   scoreBox.appendChild(scoreElem)
+    // }
+
     function moveUp() {
       player.y--;
       currentDirection = 1;
       draw();
     }
-    
+
     function moveDown() {
       player.y++;
       currentDirection = 0;
       draw();
     }
-    
+
     function moveLeft() {
       player.x--;
       currentDirection = 2;
       draw();
     }
-    
+
     function moveRight() {
       player.x++;
       currentDirection = 3;
       draw();
     }
-    
-    function showNews() {
-      if (player.x) {
-        return null;
-      }
-    }
-    
+
+    // function showNews() {
+    //   if (player.x) {
+    //     return null;
+    //   }
+    // }
+
     function moveIsLegal(newX, newY) {
       // if newX, newY compared to board[newX][newY] is a wall, return true for collision
       if (grid[newY][newX] != 1) return true;
@@ -383,17 +386,17 @@ function startGame() {
       // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
       // console.log(`newX: ${newX}, newY: ${newY}`)
     }
-    
-    function startGame() {
-      draw();
-      document.addEventListener('keydown', e => {
-        if (e.keyCode == 87 && moveIsLegal(player.x, player.y - 1)) moveUp();
-        else if (e.keyCode == 83 && moveIsLegal(player.x, player.y + 1)) moveDown();
-        else if (e.keyCode == 65 && moveIsLegal(player.x - 1, player.y)) moveLeft();
-        else if (e.keyCode == 68 && moveIsLegal(player.x + 1, player.y))
-        moveRight();
-      });
-      displayScore();
-    }
-    
+
+    // function startGame() {
+    //   draw();
+    //   document.addEventListener('keydown', e => {
+    //     if (e.keyCode == 87 && moveIsLegal(player.x, player.y - 1)) moveUp();
+    //     else if (e.keyCode == 83 && moveIsLegal(player.x, player.y + 1)) moveDown();
+    //     else if (e.keyCode == 65 && moveIsLegal(player.x - 1, player.y)) moveLeft();
+    //     else if (e.keyCode == 68 && moveIsLegal(player.x + 1, player.y))
+    //     moveRight();
+    //   });
+    //   displayScore();
+    // }
+
     startGame();
