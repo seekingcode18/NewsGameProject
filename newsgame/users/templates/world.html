@@ -11,6 +11,19 @@
         <li><a href="{% url 'level02' %}">level 02</a></li>
         <li><a href="{% url 'level03' %}">level 03</a></li>
     </ul>
+<p id="username"></p>
+<p id="id"></p>
+    <h3>World Map</h3>
+    <h4>What sort of news would you like?</h4>
+    <div class="maze-container">
+        <canvas height="300" width="400"></canvas>
+        <div class="output"></div>
+        <div class="scoreBox"></div>
+    </div>
+    {% load static %}
+    <script src="{% static 'levels/world.js' %}" type="text/javascript"></script>
+    {% load static %}
+    <script src="{% static 'game.js' %}" type="text/javascript"></script>
 
 {% else %}
     <p>You don't appear to be logged in</p>

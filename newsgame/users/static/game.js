@@ -99,6 +99,14 @@ function drawWall(posX, posY) {
   ctx.closePath();
 }
 
+function drawLevelEntrance(posX, posY) {
+  ctx.beginPath();
+  ctx.rect(posX * blockWidth, posY * blockWidth, blockWidth, blockWidth);
+  ctx.fillStyle = 'orange';
+  ctx.fill();
+  ctx.closePath();
+}
+
 function drawNPC(posX, posY) {
   ctx.beginPath();
   ctx.rect(posX * blockWidth, posY * blockWidth, blockWidth, blockWidth);
@@ -151,6 +159,8 @@ function draw() {
         //   drawPlayer(x,y)
       } else if (grid[y][x] == 3) {
         drawExit(x, y);
+      } else if (['a', 'b', 'c', 'd', 'e'].includes(grid[y][x])) {
+        drawLevelEntrance(x, y)
       }
     }
   }
@@ -176,6 +186,19 @@ function draw() {
     outputBox.appendChild(headlineToDisplay);
   }
 
+  // check whether player has run into level entrance
+  if (['a', 'b', 'c', 'd', 'e'].includes(currentLocationValue)) {
+    if (currentLocationValue == 'a') {
+      window.open("http://127.0.0.1:8000/level01/","_self")
+    } else if (currentLocationValue == 'b') {
+      window.open("http://127.0.0.1:8000/level02/","_self")
+    } else if (currentLocationValue == 'c') {
+      window.open("http://127.0.0.1:8000/level03/","_self")
+    } else if (currentLocationValue == 'd') {
+      console.log('level 4 coming soon')
+      // window.open("http://127.0.0.1:8000/level04/","_self")
+    }
+  }
 
   // exit when player is on exit block
   if (currentLocationValue == 3) {
