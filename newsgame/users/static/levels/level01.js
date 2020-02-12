@@ -1,4 +1,4 @@
-const playerSpawnLocation = [18, 13];
+wwdwdwdwdwdasdsadwwadwadwwadawdassadwdconst playerSpawnLocation = [18, 13];
 
 grid = [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],

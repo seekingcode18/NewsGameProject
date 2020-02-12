@@ -1,10 +1,16 @@
 const canvas = document.querySelector('canvas');
+// canvas.style.backgroundImage = `url("${tileSet}")`;
+// canvas.style.backgroundPosition = '16px 16px';
+// canvas.style.backgroundRepeat = 'repeat';
+// canvas.style.backgroundSize = "0px 0px";
+canvas.style.backgroundColor = '#3bbf41';
 const ctx = canvas.getContext('2d');
 // const playerSpawnLocation = [8, 1];
 
 
-// ALL THINGS SPRITE RELATED
+// ASSETS
 
+//PLAYER SPRITE
 let sprite = new Image();
 sprite.src = p1;
 sprite.onload = function() {
@@ -35,6 +41,31 @@ const cycleLoop = [0, 1, 0, 2];
 let currentLoopIndex = 0;
 let frameCount = 0;
 let currentDirection = 0;
+
+// ENVIRONMENT TILES
+
+let tiles = new Image();
+tiles.src = tileSet;
+tiles.onload = function() {
+  // drawTile(0,0,0,0);
+  // well();
+};
+
+const tileScale = 1;
+const tileWidth = 16;
+const tileHeight = 16;
+const tileSWidth = 20;
+const tileSHeight = 20;
+
+function drawTile(frameX, frameY, canvasX, canvasY) {
+  ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth, 
+                tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight); // brick 1
+}                                  //^   x    /    y   coordinates
+
+// function well() {
+//   ctx.drawImage(tiles, 112, 48, 16, 16, 20, 20, 20, 20); // well
+// }
+
 
 
 
@@ -133,6 +164,7 @@ function drawWall(posX, posY) {
   ctx.fillStyle = 'black';
   ctx.fill();
   ctx.closePath();
+  // drawTile(0,0,posX, posY);
 }
 
 function drawLevelEntrance(posX, posY) {
@@ -192,7 +224,59 @@ function draw() {
     for (x = 0; x < grid[y].length; x++) {
       //     if 1, draw wall
       if (grid[y][x] == 1) {
-        drawWall(x, y);
+        // drawWall(x, y);
+        drawTile(2,15,x,y);
+      } else if (grid[y][x] == 0) {
+        // drawWall(x, y);
+        drawTile(5,9,x,y);
+      } else if (grid[y][x] == 8) {
+        // drawWall(x, y);
+        drawTile(0,0,x,y);
+      } else if (grid[y][x] == 2) {
+        // drawWall(x, y);
+        drawTile(1,14,x,y);
+      } else if (grid[y][x] == 'bl') {
+        // drawWall(x, y);
+        drawTile(1,15,x,y);
+      } else if (grid[y][x] == 'tl') {
+        // drawWall(x, y);
+        drawTile(1,13,x,y);
+      } else if (grid[y][x] == 'tr') {
+        // drawWall(x, y);
+        drawTile(3,13,x,y);
+      } else if (grid[y][x] == 'br') {
+        // drawWall(x, y);
+        drawTile(3,15,x,y);
+      } else if (grid[y][x] == 'hl') {
+        // drawWall(x, y);
+        drawTile(0,16,x,y);
+      } else if (grid[y][x] == 'hr') {
+        // drawWall(x, y);
+        drawTile(1,16,x,y);
+      } else if (grid[y][x] == 'ht') {
+        // drawWall(x, y);
+        drawTile(0,14,x,y);
+      } else if (grid[y][x] == 'hb') {
+        // drawWall(x, y);
+        drawTile(0,15,x,y);
+      } else if (grid[y][x] == 't') {
+        // drawWall(x, y);
+        drawTile(0,15,x,y);
+      } else if (grid[y][x] == 'a1') {
+        // drawWall(x, y);
+        drawTile(5,17,x,y);
+      } else if (grid[y][x] == 'a2') {
+        // drawWall(x, y);
+        drawTile(6,17,x,y);
+      } else if (grid[y][x] == 'a3') {
+        // drawWall(x, y);
+        drawTile(6,16,x,y);
+      } else if (grid[y][x] == 'a4') {
+        // drawWall(x, y);
+        drawTile(5,16,x,y);
+      } else if (grid[y][x] == 'r') {
+        // drawWall(x, y);
+        drawTile(6,5,x,y);
       } else if ([5, 6, 7, 8, 9].includes(grid[y][x])) {
         drawNPC(x, y);
         // } else if (grid[y][x] == 3) {
@@ -232,8 +316,8 @@ function draw() {
   }
 
   // on world map, check whether player has run into level entrance
-  if (['a', 'b', 'c', 'd', 'e'].includes(currentLocationValue)) {
-    if (currentLocationValue == 'a') {
+  if (['a1', 'a2', 'a3', 'a4', 'b', 'c', 'd', 'e'].includes(currentLocationValue)) {
+    if (['a1', 'a2', 'a3', 'a4'].includes(currentLocationValue)) {
       window.open("http://127.0.0.1:8000/level01/","_self")
     } else if (currentLocationValue == 'b') {
       window.open("http://127.0.0.1:8000/level02/","_self")
@@ -260,7 +344,7 @@ function draw() {
     })
   })
   console.log('exit')
-  // window.open("http://127.0.0.1:8000/world/","_self")
+  window.open("http://127.0.0.1:8000/world/","_self")
 };
 }
 
@@ -380,7 +464,7 @@ function startGame() {
 
     function moveIsLegal(newX, newY) {
       // if newX, newY compared to board[newX][newY] is a wall, return true for collision
-      if (grid[newY][newX] != 1) return true;
+      if (![1, 2, 'ht', 'hb', 'bl', 'br', 'tl', 'tr', 'r', 'hr', 'hl'].includes(grid[newY][newX])) return true;
       else return false;
       // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
       // console.log(`newX: ${newX}, newY: ${newY}`)
