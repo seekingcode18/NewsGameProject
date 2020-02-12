@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
 }
 
-.login-box > a {
+.login-box a, .login-container button {
   background: var(--brown);
   color: white;
   padding: 0.5rem 1rem;
@@ -52,7 +52,33 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--orange);
 }
 
+.login-container-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.login-container-2 button {
+  margin: auto;
+  display: block;
+  margin-top: 2rem;
+}
+
+.login-container-2 a {
+  color: var(--brown)
+}
+
+.login-container-2 h2 {
+  margin-top: 0;
+}
+
+input[type="text"], input[type="password"] {
+  border: 1px solid var(--grey);
+  padding: 0.3rem;
+  margin-left: 1rem;
+  border-radius: 5px;
+  background: #fcf4cf;
+}
 
 /* world */
 .world-wrapper {
@@ -78,10 +104,16 @@ header a:hover {
   text-decoration: underline;
 }
 
+.level-title {
+  text-align: center;
+}
 
 
 
 /* game */
+.maze-container {
+  text-align: center;
+}
 canvas {
   border: 1px black solid;
   background: #eeeeee;
