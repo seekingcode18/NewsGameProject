@@ -309,6 +309,36 @@ function draw() {
         case 'a4':
           drawTile(5,16,x,y);
           break;
+        case 'b1':
+          drawTile(7,16,x,y);
+          break;
+        case 'b2':
+          drawTile(7,17,x,y);
+          break;
+        case 'b3':
+          drawTile(7,18,x,y);
+          break;
+        case 'b4':
+          drawTile(6,18,x,y);
+          break;
+        case 'b5':
+          drawTile(5,18,x,y);
+          break;
+        case 'b6':
+          drawTile(5,19,x,y);
+          break;
+        case 'b7':
+          drawTile(4,19,x,y);
+          break;
+        case 'b8':
+          drawTile(3,19,x,y);
+          break;
+        case 'b9':
+          drawTile(4,16,x,y);
+          break;
+        case 'b10':
+          drawTile(3,16,x,y);
+          break;
         case 'r':
           drawTile(6,5,x,y);
           break;

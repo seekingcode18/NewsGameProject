@@ -21,8 +21,6 @@
     </div>
 {% load static %}
 <script src="{% static 'levels/level01.js' %}" type="text/javascript"></script>
-{% load static %}
-<script src="{% static 'game.js' %}" type="text/javascript"></script>
 
     <form action='127.0.0.1:8000/users/update/' method='post'>
         {% csrf_token %}
