@@ -3,6 +3,22 @@ const ctx = canvas.getContext('2d');
 // const playerSpawnLocation = [8, 1];
 
 
+// ALL THINGS MUSIC RELATED
+const mute = document.querySelector('#mute')
+
+mute.addEventListener('click', e => {
+  e.preventDefault();
+  playMusic();
+})
+
+function playMusic() {
+  const audio = document.querySelector('audio');
+  // audio.play()
+  if (audio.muted) audio.muted = false;
+  else if (!audio.muted) audio.muted = true;
+  }
+
+
 // ALL THINGS SPRITE RELATED
 
 let sprite = new Image();
