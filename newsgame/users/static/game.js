@@ -6,8 +6,7 @@ const ctx = canvas.getContext('2d');
 // ALL THINGS SPRITE RELATED
 
 let sprite = new Image();
-// img.src = './Green-Cap-Character-16x18.png';
-sprite.src = 'https://opengameart.org/sites/default/files/Green-Cap-Character-16x18.png';
+sprite.src = p1;
 sprite.onload = function() {
     init();
 };

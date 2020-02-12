@@ -2,6 +2,11 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+    {% load static %}
+    <script type="text/javascript">
+        var p1 = "{% static 'Green-Cap-Character-16x18.png' %}";
+        var tiles = "{% static 'basictiles.png' %}";
+    </script>
     <p>Hi <span id="username">{{user.username}}</span></p>
     <p>points: <span id="points">{{user.points}}</span></p>
     <a href="{% url 'logout'%}">log out</a>
