@@ -42,3 +42,16 @@ body {
     margin: 0;
     padding: 0;
   }
+table {
+  border-spacing: 0;
+}
+td {
+  padding: 0.5rem 1rem;
+}
+tr:nth-child(odd) {
+  background: #eeeeee;
+}
+
+tr:nth-child(even) {
+  background: #dddddd;
+}
