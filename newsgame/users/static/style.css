@@ -1,44 +1,143 @@
+:root {
+  --brown: #782F1D;
+  --cream: #EBC48D;
+  --grey: #5B6059;
+  --gold: #958C70;
+  --orange: #B85F39;
+}
+::selection {
+  color: white;
+  background-color: var(--orange);
+}
 body {
-    background: #cbcbcb;
-  }
-  canvas {
-    border: 1px black solid;
-    background: #eeeeee;
-  }
-  .console {
-    padding: 2rem;
-    font-size: 1.25rem;
-    font-family: monospace;
-    background: #ddd;
-    width: 30%;
-    font-weight: bold;
-    margin-top: 1rem;
-  }
-  .output {
-    padding: 2rem;
-    font-size: 1.25rem;
-    font-family: monospace;
-    background: #eee;
-    width: 30%;
-    font-weight: bold;
-    margin-top: 1rem;
-    min-height: 80px;
-  }
-  .output > * {
-    margin: 0;
-    padding: 0;
-  }
-  .scoreBox {
-    padding: 1rem;
-    font-size: 1.25rem;
-    font-family: sans-serif;
-    background: #98e2f8;
-    width: 15%;
-    font-weight: bold;
-    margin-top: 1rem;
-    min-height: 40px;
-  }
-  .scoreBox > * {
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+  background: url('./paper1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'MedievalSharp', cursive;
+  font-weight: bold;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fondamento', cursive;
+  font-weight: bold;
+}
+
+
+/* home page before log in */
+.splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-box {
+  display: flex;
+  justify-content: center;
+}
+
+.login-box > a {
+  background: var(--brown);
+  color: white;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  text-decoration: none;
+  transition: 0.2s;
+  border-radius: 5px;
+}
+
+.login-box > a:hover {
+  background: var(--orange);
+}
+
+
+
+/* world */
+.world-wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+header {
+  background: var(--brown);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+/* game */
+canvas {
+  border: 1px black solid;
+  background: #eeeeee;
+}
+.console {
+  padding: 2rem;
+  font-size: 1.25rem;
+  font-family: monospace;
+  background: #ddd;
+  width: 30%;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+.output {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  text-align: center;
+  background-image: url('./scroll.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 35%;
+  margin: auto;
+  font-weight: bold;
+  margin-top: 1rem;
+  min-height: 150px;
+}
+.output > * {
+  margin: 0;
+  padding: 0;
+}
+.scoreBox {
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-family: sans-serif;
+  background: #98e2f8;
+  width: 15%;
+  font-weight: bold;
+  margin-top: 1rem;
+  min-height: 40px;
+}
+.scoreBox > * {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-spacing: 0;
+}
+td {
+  padding: 0.5rem 1rem;
+}
+tr:nth-child(odd) {
+  background: #eeeeee;
+}
+
+tr:nth-child(even) {
+  background: #dddddd;
+}
