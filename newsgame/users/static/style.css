@@ -21,7 +21,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Fondamento', cursive;
   font-weight: bold;
 }
-
+a {
+  color: #000000;
+  text-decoration: none;
+}
 
 /* home page before log in */
 .splash {
@@ -161,10 +164,19 @@ canvas {
   padding: 0;
 }
 table {
+  margin: auto;
   border-spacing: 0;
+  width: 40vw;
+  cursor: default;
 }
 td {
+  text-align: center;
+  font-size: 1.35rem;
   padding: 0.5rem 1rem;
+  text-transform: capitalize;
+}
+tr:hover {
+  background: var(--cream);
 }
 tr:nth-child(odd) {
   background: #eeeeee;
