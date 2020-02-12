@@ -10,6 +10,19 @@ const ctx = canvas.getContext('2d');
 
 // ASSETS
 
+// LOG NPC
+let log = new Image();
+log.src = logg;
+log.onload = function() {
+    // do something
+}
+
+function drawLog(frameX, frameY, canvasX, canvasY) {
+  // ctx.drawImage(log, frameX * tileWidth, frameY * tileWidth, 
+  //               tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight);
+     ctx.drawImage(log, 0, 0, 32, 32, canvasX * blockWidth, canvasY * blockWidth, 20, 20);
+}
+
 //PLAYER SPRITE
 let sprite = new Image();
 sprite.src = p1;
@@ -223,70 +236,104 @@ function draw() {
     //   loop through each subarray for x axis
     for (x = 0; x < grid[y].length; x++) {
       //     if 1, draw wall
-      if (grid[y][x] == 1) {
-        // drawWall(x, y);
-        drawTile(2,15,x,y);
-      } else if (grid[y][x] == 0) {
-        // drawWall(x, y);
-        drawTile(5,9,x,y);
-      } else if (grid[y][x] == 8) {
-        // drawWall(x, y);
-        drawTile(0,0,x,y);
-      } else if (grid[y][x] == 2) {
-        // drawWall(x, y);
-        drawTile(1,14,x,y);
-      } else if (grid[y][x] == 'bl') {
-        // drawWall(x, y);
-        drawTile(1,15,x,y);
-      } else if (grid[y][x] == 'tl') {
-        // drawWall(x, y);
-        drawTile(1,13,x,y);
-      } else if (grid[y][x] == 'tr') {
-        // drawWall(x, y);
-        drawTile(3,13,x,y);
-      } else if (grid[y][x] == 'br') {
-        // drawWall(x, y);
-        drawTile(3,15,x,y);
-      } else if (grid[y][x] == 'hl') {
-        // drawWall(x, y);
-        drawTile(0,16,x,y);
-      } else if (grid[y][x] == 'hr') {
-        // drawWall(x, y);
-        drawTile(1,16,x,y);
-      } else if (grid[y][x] == 'ht') {
-        // drawWall(x, y);
-        drawTile(0,14,x,y);
-      } else if (grid[y][x] == 'hb') {
-        // drawWall(x, y);
-        drawTile(0,15,x,y);
-      } else if (grid[y][x] == 't') {
-        // drawWall(x, y);
-        drawTile(0,15,x,y);
-      } else if (grid[y][x] == 'a1') {
-        // drawWall(x, y);
-        drawTile(5,17,x,y);
-      } else if (grid[y][x] == 'a2') {
-        // drawWall(x, y);
-        drawTile(6,17,x,y);
-      } else if (grid[y][x] == 'a3') {
-        // drawWall(x, y);
-        drawTile(6,16,x,y);
-      } else if (grid[y][x] == 'a4') {
-        // drawWall(x, y);
-        drawTile(5,16,x,y);
-      } else if (grid[y][x] == 'r') {
-        // drawWall(x, y);
-        drawTile(6,5,x,y);
-      } else if ([5, 6, 7, 8, 9].includes(grid[y][x])) {
-        drawNPC(x, y);
-        // } else if (grid[y][x] == 3) {
-          //   drawPlayer(x,y)
-        } else if (grid[y][x] == 3) {
+      switch(grid[y][x]) {
+        case 1:
+          drawTile(2,15,x,y);
+          break;
+        case 0:
+          drawTile(5,9,x,y);
+          break;
+        case 8:
+          drawTile(0,0,x,y);
+          break;
+        case 2:
+          drawTile(1,14,x,y);
+          break;
+        case 'bl':
+          drawTile(1,15,x,y);
+          break;
+        case 'tl':
+          drawTile(1,13,x,y);
+          break;
+        case 'tr':
+          drawTile(3,13,x,y);
+          break;
+        case 'br':
+          drawTile(3,15,x,y);
+          break;
+        case 'hl':
+          drawTile(0,16,x,y);
+          break;
+        case 'hr':
+          drawTile(1,16,x,y);
+          break;
+        case 'ht':
+          drawTile(0,14,x,y);
+          break;
+        case 'hb':
+          drawTile(0,15,x,y);
+          break;
+        case 't':
+          console.log('what is t')
+          break;
+        case 'tt':
+          drawTile(5,18,x,y);
+          break;
+        case 'ti':
+          drawTile(2,16,x,y);
+          break;
+        case 'tll':
+          drawTile(6,18,x,y);
+          break;
+        case 'trr':
+          drawTile(7,18,x,y);
+          break;
+        case 'tb':
+          drawTile(5,19,x,y);
+          break;
+        case 'tcr':
+          drawTile(3,19,x,y);
+          break;
+        case 's':
+          drawTile(1,1,x,y);
+          break;
+        case 'a1':
+          drawTile(5,17,x,y);
+          break;
+        case 'a2':
+          drawTile(6,17,x,y);
+          break;
+        case 'a3':
+          drawTile(6,16,x,y);
+          break;
+        case 'a4':
+          drawTile(5,16,x,y);
+          break;
+        case 'r':
+          drawTile(6,5,x,y);
+          break;
+        case 'log':
+          drawLog(0,0, x, y);
+          break;
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+          drawTile(5,9,x,y);
+          break;
+        case 3:
           drawExit(x, y);
-        } else if (['a', 'b', 'c', 'd', 'e'].includes(grid[y][x])) {
+          break;
+        case 'a':
+        case 'b':
+        case 'c':
+        case 'd':
+        case 'e':
           drawLevelEntrance(x, y)
+          break;
         }
-      }
+      } 
     }
 
     drawFrame(cycleLoop[currentLoopIndex], currentDirection, 0, 0);
@@ -464,7 +511,7 @@ function startGame() {
 
     function moveIsLegal(newX, newY) {
       // if newX, newY compared to board[newX][newY] is a wall, return true for collision
-      if (![1, 2, 'ht', 'hb', 'bl', 'br', 'tl', 'tr', 'r', 'hr', 'hl'].includes(grid[newY][newX])) return true;
+      if (![1, 2, 'log', 'ht', 'hb', 'bl', 'br', 'tl', 'tr', 'r', 'hr', 'hl'].includes(grid[newY][newX])) return true;
       else return false;
       // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
       // console.log(`newX: ${newX}, newY: ${newY}`)
