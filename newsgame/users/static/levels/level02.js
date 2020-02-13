@@ -19,19 +19,12 @@ grid = [
 ];
 
 const canvas = document.querySelector('canvas');
-// canvas.style.backgroundImage = `url("${tileSet}")`;
-// canvas.style.backgroundPosition = '16px 16px';
-// canvas.style.backgroundRepeat = 'repeat';
-// canvas.style.backgroundSize = "0px 0px";
 canvas.style.backgroundColor = '#93775c';
 const ctx = canvas.getContext('2d');
-// const playerSpawnLocation = [8, 1];
-
 
 // ASSETS
 
 // ALL THINGS WEATHER RELATED
-
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(handleWeather);
@@ -49,24 +42,21 @@ function handleWeather(position) {
   let weatherApiKey = 'bd39648442d5b7099e03718b9da3f06b';
   let weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}`
 
-  // fetch(weatherApiUrl)
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     console.log(res)
-  //     // show temp in deg C not K
-  //     const temp = Math.floor(res.main.temp - 273.15)
-  //     weatherTemp.innerHTML =  `The weather in ${res.name} is ${temp}&deg;C and ${res.weather[0].main.toLowerCase()}.`
-  //     weatherBox.appendChild(weatherTemp)
+  fetch(weatherApiUrl)
+    .then(res => res.json())
+    .then(res => {
+      console.log(res)
+      // show temp in deg C not K
+      const temp = Math.floor(res.main.temp - 273.15)
+      weatherTemp.innerHTML =  `The weather in ${res.name} is ${temp}&deg;C and ${res.weather[0].main.toLowerCase()}.`
+      weatherBox.appendChild(weatherTemp)
 
-  //     // set icon to img tag
-  //     const iconCode = res.weather[0].icon.replace('n', 'd')
-  //     weatherIcon.src = `http://openweathermap.org/img/wn/${iconCode}@2x.png`
-  //     weatherBox.appendChild(weatherIcon)
-  //   })
+      // set icon to img tag
+      const iconCode = res.weather[0].icon.replace('n', 'd')
+      weatherIcon.src = `http://openweathermap.org/img/wn/${iconCode}@2x.png`
+      weatherBox.appendChild(weatherIcon)
+    })
 }
-
-
-
 
 // ALL THINGS MUSIC RELATED
 const mute = document.querySelector('#mute')
@@ -91,25 +81,17 @@ tav.onload = function() {
 }
 
 function drawTvd(frameX, frameY, canvasX, canvasY) {
-  // ctx.drawImage(log, frameX * tileWidth, frameY * tileWidth, 
-  //               tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight);
      ctx.drawImage(tav, 0, 8, 16, 16, canvasX * blockWidth, canvasY * blockWidth, spriteSWidth, spriteSHeight);
 }
 function drawTvr(frameX, frameY, canvasX, canvasY) {
-  // ctx.drawImage(log, frameX * tileWidth, frameY * tileWidth, 
-  //               tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight);
      ctx.drawImage(tav, 0, 40, 16, 16, canvasX * blockWidth, canvasY * blockWidth, spriteSWidth, spriteSHeight);
 }
 
 function drawTvu(frameX, frameY, canvasX, canvasY) {
-  // ctx.drawImage(log, frameX * tileWidth, frameY * tileWidth, 
-  //               tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight);
      ctx.drawImage(tav, -1, 70, 16, 16, canvasX * blockWidth, canvasY * blockWidth, spriteSWidth, spriteSHeight);
 }
 
 function drawTvl(frameX, frameY, canvasX, canvasY) {
-  // ctx.drawImage(log, frameX * tileWidth, frameY * tileWidth, 
-  //               tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight);
      ctx.drawImage(tav, -2, 103, 16, 16, canvasX * blockWidth, canvasY * blockWidth, spriteSWidth, spriteSHeight);
 }
 
@@ -130,7 +112,7 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
   ctx.drawImage(sprite,
                frameX * spriteWidth, frameY * spriteHeight, spriteWidth,
                spriteHeight, player.x * blockWidth, player.y * blockWidth, spriteSWidth, spriteSHeight);
-}                       //    ^         ^ to alter coordinates!
+}
 
 function init() {
   //animation frames in a given direction
@@ -150,8 +132,6 @@ let currentDirection = 0;
 let inner = new Image();
 inner.src = innerSet;
 inner.onload = function() {
-  // drawTile(0,0,0,0);
-  // well();
 };
 
 const tileScale = 1;
@@ -163,21 +143,7 @@ const tileSHeight = 20;
 function drawTile(frameX, frameY, canvasX, canvasY) {
   ctx.drawImage(inner, frameX * tileWidth, frameY * tileWidth, 
                 tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight); // brick 1
-}                                  //^   x    /    y   coordinates
-
-// function well() {
-//   ctx.drawImage(tiles, 112, 48, 16, 16, 20, 20, 20, 20); // well
-// }
-
-
-
-
-// let grid = require('./levels/level01');
-// import level01 from './levels/level01';
-// console.log(level01)
-// let grid = level01
-// console.log(grid)
-// console.log(canvas)
+}
 
 // news API
 const url = 'https://newsapi.org/v2/top-headlines?' +
@@ -194,19 +160,10 @@ fetch(req)
       headlines.push(article);
     })
   })
-  // .then(function(response) {
-  //   console.log(response.json());
-  // })
 
 let score = 0;
 
-// document.querySelector("#points");
 let points = Number(document.querySelector("#points").innerHTML);
-// console.log(points)
-// const newPoints = Number(points) + 5
-// console.log(newPoints)
-// document.querySelector("#points").innerHTML = String(newPoints);
-// console.log(document.querySelector("#points"));
 
 const username = document.querySelector("#username").innerHTML;
 const id = document.querySelector("#id").value;
@@ -254,13 +211,6 @@ function drawNPC(posX, posY) {
 }
 
 function drawPlayer(posX, posY) {
-  // console.log('draw player');
-  // console.log(player);
-  // ctx.beginPath();
-  // ctx.rect(posX * blockWidth, posY * blockWidth, blockWidth, blockWidth);
-  // ctx.fillStyle = '#4ac24a';
-  // ctx.fill();
-  // ctx.closePath();
   player.x = posX;
   player.y = posY;
 }
@@ -281,9 +231,6 @@ function drawText() {
   ctx.closePath();
 }
 
-//initiate sprite animation
-// change to draw?
-// window.requestAnimationFrame(draw);
 
 function draw() {
   // clear before redraw
@@ -475,39 +422,11 @@ function displayScore() {
   scoreBox.appendChild(scoreElem)
 }
 
-// function moveUp() {
-//   player.y--;
-//   draw();
-// }
-
-// function moveDown() {
-//   player.y++;
-//   draw();
-// }
-
-// function moveLeft() {
-//   player.x--;
-//   draw();
-// }
-
-// function moveRight() {
-//   player.x++;
-//   draw();
-// }
-
 function showNews() {
   if (player.x) {
     return null;
   }
 }
-
-// function moveIsLegal(newX, newY) {
-//   // if newX, newY compared to board[newX][newY] is a wall, return true for collision
-//   if (grid[newY][newX] != 1) return true;
-//   else return false;
-//   // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
-//   // console.log(`newX: ${newX}, newY: ${newY}`)
-// }
 
 function startGame() {
   draw();
@@ -520,24 +439,6 @@ function startGame() {
   });
   displayScore();
 }
-
-    // function scoreHandler(currentLocationValue) {
-    //   // only increase score for the first time player clicks a particular headline
-    //   if (headlines[currentLocationValue].clicked == false) {
-    //     score += 5;
-    //     console.log(score)
-    //     document.getElementById('scoreBox').innerHTML = `Score (from js) - ${score}`
-    //   }
-    //   headlines[currentLocationValue].clicked = true
-    // }
-
-    // function displayScore() {
-    //   const scoreBox = document.querySelector('.scoreBox');
-    //   const scoreElem = document.createElement('p')
-    //   scoreElem.innerHTML = `Score (from js) - ${score}`
-    //   scoreElem.id = 'scoreBox'
-    //   scoreBox.appendChild(scoreElem)
-    // }
 
     function moveUp() {
       player.y--;
@@ -563,31 +464,11 @@ function startGame() {
       draw();
     }
 
-    // function showNews() {
-    //   if (player.x) {
-    //     return null;
-    //   }
-    // }
-
     function moveIsLegal(newX, newY) {
       // if newX, newY compared to board[newX][newY] is a wall, return true for collision
       if (![1, 2, 't1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 'wh', 'tvu', 'tvd', 'tvl', 'tvr',].includes(grid[newY][newX])) return true;
       else return false;
-      // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
-      // console.log(`newX: ${newX}, newY: ${newY}`)
     }
-
-    // function startGame() {
-    //   draw();
-    //   document.addEventListener('keydown', e => {
-    //     if (e.keyCode == 87 && moveIsLegal(player.x, player.y - 1)) moveUp();
-    //     else if (e.keyCode == 83 && moveIsLegal(player.x, player.y + 1)) moveDown();
-    //     else if (e.keyCode == 65 && moveIsLegal(player.x - 1, player.y)) moveLeft();
-    //     else if (e.keyCode == 68 && moveIsLegal(player.x + 1, player.y))
-    //     moveRight();
-    //   });
-    //   displayScore();
-    // }
 
     startGame();
 
