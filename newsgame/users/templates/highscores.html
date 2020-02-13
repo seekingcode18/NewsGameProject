@@ -3,16 +3,23 @@
 {% block content %}
 {% if user.is_authenticated %}
     {% load static %}
-    <p>Hi <span id="username">{{user.username}}</span></p>
-    <p>points: <span id="points">{{user.points}}</span></p>
-    <a href="{% url 'logout'%}">log out</a>
-    <a href="{% url 'world'%}">World map</a>
+    <header>
+        <div class="header-title">
+            <h3><a href="{% url 'world' %}">Game title</a></h3>
+        </div>
+        <!-- <div class="user-box"> -->
+            <p class="user-para">Welcome, <span id="username">{{user.username}}</span></p>
+            <p class="points-para">Points: <span id="points">{{user.points}}</span></p>
+        <!-- </div> -->
+        <div class="logout-box">
+            <a href="{% url 'logout'%}">Log out</a>
+        </div>
+        <input type="hidden" id="id" value={{user.id}}>
+        <input type="hidden" id="csrf" value={{csrf_token}}>
+    </header>
+    <div class="world-wrapper">
+
     <h2>High Scores</h2>
-<script>
-    fetch('http://127.0.0.1:8000/user/')
-        .then(res => res.json())
-        .then(res => console.log(res))
-</script>
 <table>
 {% for user in users %}
     <tr>
@@ -21,10 +28,20 @@
     </tr>
     {% endfor %}
 </table>
+</div>
 {% else %}
-    <p>You don't appear to be logged in</p>
-    <a href="{% url 'login'%}">login</a>
-    <a href="{% url 'signup'%}">signup</a>
-    <p>Welcome to World! :)</p>
+<div class="world-wrapper" style="text-align:center;margin-top:15rem;">
+<div class="game-title">
+    <h1>Game title</h1>
+</div>
+<div class="login-container">
+    <p>You don't appear to be logged in.</p>
+    <div class="login-box">
+        <a href="{% url 'login'%}">Login</a>
+        <a href="{% url 'signup'%}">Signup</a>
+    </div>
+</div>
+
+</div></div>
 {% endif %}
 {% endblock content %}
