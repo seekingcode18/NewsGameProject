@@ -31,7 +31,11 @@
         </div>
         <div class="weather">
         </div>
-        <div class="maze-container">
+        <div id="player">
+        <audio hidden loop muted autoplay src="{% static 'superhero.ogg' %}" type="audio/ogg">
+        If you're reading this, audio isn't supported by your browser.
+        </audio>
+        </div>        <div class="maze-container">
             <canvas height="300" width="400"></canvas>
             <div class="output"></div>
         </div>

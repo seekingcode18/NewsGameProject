@@ -31,6 +31,58 @@ const ctx = canvas.getContext('2d');
 
 // ASSETS
 
+// ALL THINGS WEATHER RELATED
+
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(handleWeather);
+  console.log('navigator geo location working in this browser')
+}
+
+function handleWeather(position) {
+  const weatherBox = document.querySelector('.weather')
+  const weatherTemp = document.createElement('p')
+  const weatherIcon = document.createElement('img')
+  weatherIcon.alt = 'current weather icon'
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+
+  let weatherApiKey = 'bd39648442d5b7099e03718b9da3f06b';
+  let weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}`
+
+  // fetch(weatherApiUrl)
+  //   .then(res => res.json())
+  //   .then(res => {
+  //     console.log(res)
+  //     // show temp in deg C not K
+  //     const temp = Math.floor(res.main.temp - 273.15)
+  //     weatherTemp.innerHTML =  `The weather in ${res.name} is ${temp}&deg;C and ${res.weather[0].main.toLowerCase()}.`
+  //     weatherBox.appendChild(weatherTemp)
+
+  //     // set icon to img tag
+  //     const iconCode = res.weather[0].icon.replace('n', 'd')
+  //     weatherIcon.src = `http://openweathermap.org/img/wn/${iconCode}@2x.png`
+  //     weatherBox.appendChild(weatherIcon)
+  //   })
+}
+
+
+
+// ALL THINGS MUSIC RELATED
+const mute = document.querySelector('#mute')
+
+mute.addEventListener('click', e => {
+  e.preventDefault();
+  playMusic();
+})
+
+function playMusic() {
+  const audio = document.querySelector('audio');
+  // audio.play()
+  if (audio.muted) audio.muted = false;
+  else if (!audio.muted) audio.muted = true;
+  }
+
 // LOG NPC
 let log = new Image();
 log.src = logg;

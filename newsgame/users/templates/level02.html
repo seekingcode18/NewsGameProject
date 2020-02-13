@@ -25,6 +25,16 @@
     </header>
     <p id="username"></p>
     <p id="id"></p>
+    <div>
+        <a href="#" id="mute">Toggle music</a>
+    </div>
+    <div class="weather">
+    </div>
+    <div id="player">
+    <audio hidden loop muted autoplay src="{% static 'superhero.ogg' %}" type="audio/ogg">
+        If you're reading this, audio isn't supported by your browser.
+    </audio>
+    </div>
     <div class="world-wrapper">
         <h2 class="level-title">Level 2</h2>
         <div class="maze-container">

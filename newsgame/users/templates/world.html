@@ -25,6 +25,16 @@
         <h4>Visit levels to meet the characters, who will inform you of the news.<br>If you choose to read the news, you will accumulate points.<br>Exiting a level will bring you back to the world map where you can visit other levels.</h4>
         <p id="username"></p>
         <p id="id"></p>
+        <div>
+        <a href="#" id="mute">Toggle music</a>
+        </div>
+        <div class="weather">
+        </div>
+        <div id="player">
+        <audio hidden loop muted autoplay src="{% static 'superhero.ogg' %}" type="audio/ogg">
+        If you're reading this, audio isn't supported by your browser.
+        </audio>
+        </div>
         <a href="{% url 'highscores'%}">High Scores</a>
         <h4>What sort of news would you like?</h4>
         <div class="maze-container">
