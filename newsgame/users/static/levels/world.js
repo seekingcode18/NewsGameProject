@@ -713,7 +713,7 @@ function startGame() {
 
     function moveIsLegal(newX, newY) {
       // if newX, newY compared to board[newX][newY] is a wall, return true for collision
-      if (![1, 2, 'log', 'ht', 'hb', 'bl', 'br', 'tl', 'tr', 'r', 'hr', 'hl'].includes(grid[newY][newX])) return true;
+      if (![1, 2, 'log', 'ht', 'hb', 'bl', 'br', 'tl', 'tr', 'r', 'hr', 'hl', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8', 'h9', 'h10', 'h11', 'h12', 'h13', 'h14', 'h15', 'h16', 'h17', 'h18', 'h19', 'h20', 'h21', 'h22', 'h24', 'h25', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10', 'c11', 'c12'].includes(grid[newY][newX])) return true;
       else return false;
       // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
       // console.log(`newX: ${newX}, newY: ${newY}`)

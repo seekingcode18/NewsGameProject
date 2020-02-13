@@ -1,4 +1,4 @@
-const playerSpawnLocation = [7, 6];
+const playerSpawnLocation = [10, 13];
 
 grid = [
   [  'wh',     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,  'wh'],

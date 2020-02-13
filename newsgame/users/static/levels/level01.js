@@ -6,12 +6,12 @@ grid = [
   [    's',    's',   's',     3, 'a4', 'tt',  'ti','ti','ti','ti','ti','ti','b9','tt','a3',   3,   's',   's',    's',    's'],
   [    's',    's',   's',     3, 'b4', 'ti',  'ti','ti','ti','ti','ti','ti','ti','ti','b3',   3,   's',   's',    's',    's'],
   [    's',    's',     3,  'a4', 'b10', 'ti',  'ti','ti','ti','ti','ti','ti','ti','ti','b9', 'a3',  3,   's',    's',    's'],
-  [    's',      3,  'a4',  'b10', 'ti', 'ti',  'ti','ti','ti','ti','ti','ti','ti','ti','ti', 'b9','a3',  3,'s',    's'],
-  [    's',      3,  'tll',  'ti', 'ti', 'ti',  'ti','ti','ti','ti','ti','ti','ti',7,'log','ti','trr',  3,    's',    's'],
-  [    's',      3,  'tll',  'ti', 'ti', 'ti',  'ti','ti','ti','ti','ti','ti','ti','ti','ti', 'ti','trr',  3,    's',    's'],
+  [    's',      3,  'a4',  'b10', 'ti', 'ti',  'ti','ti','ti','ti','ti','ti','ti','ti', 7, 'b9','a3',  3,'s',    's'],
+  [    's',      3,  'tll',  'ti', 'ti', 'ti',  'ti','ti','ti','ti','ti','ti','ti',7,'log', 7,'trr',  3,    's',    's'],
+  [    's',      3,  'tll',  'ti', 'ti', 'ti',  'ti','ti','ti','ti','ti','ti','ti','ti', 7, 'ti','trr',  3,    's',    's'],
   [    's',      3,  'tll',  'ti', 'ti', 5,  6,'ti','ti','ti','ti','ti','ti','ti','ti', 'ti','trr',  3,    's',    's'],
-  [    's',      3,  'a1',  'b8', 'ti', 'log',  'log','ti','ti','ti','ti','ti','ti','ti','ti', 'b7','a2',  3,    's',    's'],
-  [    's',      3,   3,  'a1', 'b8', 'ti',  'ti','ti','ti','ti','ti','ti','ti','ti','b7', 'a2',  3,   's',    's',    's'],
+  [    's',      3,  'a1',  'b8',  5, 'log', 'log', 6,'ti','ti','ti','ti','ti','ti','ti', 'b7','a2',  3,    's',    's'],
+  [    's',      3,   3,  'a1', 'b8', 5,  6,'ti','ti','ti','ti','ti','ti','ti','b7', 'a2',  3,   's',    's',    's'],
   [    's',    's',   3,     3, 'b4', 'ti',  'ti','ti','ti','ti','ti','ti','ti','ti','b3',   3,   's',   's',    's',    's'],
   [    's',    's',   's',     3, 'a1', 'b6',  'b8','ti','ti','ti','ti','ti','b7','b6','a2',   3,   's',   's',    's',    's'],
   [    's',    's','s',    's',    3,    3,  'a1','b8','ti','ti','ti','b7','a2',  3,  3,    's',   's',   's' ,   's',    's'],
@@ -23,7 +23,7 @@ const canvas = document.querySelector('canvas');
 // canvas.style.backgroundPosition = '16px 16px';
 // canvas.style.backgroundRepeat = 'repeat';
 // canvas.style.backgroundSize = "0px 0px";
-canvas.style.backgroundColor = '#3bbf41';
+canvas.style.backgroundColor = '#9fccea';
 const ctx = canvas.getContext('2d');
 // const playerSpawnLocation = [8, 1];
 
@@ -121,6 +121,7 @@ function init() {
   drawFrame(0, 0, spriteSWidth * 2, 0);
   drawFrame(2, 0, spriteSWidth * 3, 0);
 }
+
 
 const cycleLoop = [0, 1, 0, 2];
 let currentLoopIndex = 0;
@@ -329,7 +330,7 @@ function draw() {
           drawTile(5,19,x,y);
           break;
         case 's':
-          drawTile(1,1,x,y);
+          drawTile(38,38,x,y);
           break;
         case 'a1':
           drawTile(5,17,x,y);
@@ -374,17 +375,17 @@ function draw() {
           drawTile(3,16,x,y);
           break;
         case 'log':
-          drawLog(0,0, x, y);
+          drawTile(2,16, x, y);
           break;
         case 5:
         case 6:
         case 7:
         case 8:
         case 9:
-          drawTile(5,9,x,y);
+          drawTile(2,16,x,y);
           break;
         case 3:
-          drawTile(1,1,x,y);
+          drawTile(38,38,x,y);
           break;
         }
       } 
@@ -395,6 +396,9 @@ function draw() {
     if (currentLoopIndex >= cycleLoop.length) {
       currentLoopIndex = 0
     }
+    drawLog(0,0, 5, 9);
+    drawLog(0,0, 6, 9);
+    drawLog(0,0, 14, 6);
   drawPlayer(player.x, player.y);
 
   // clear the output box when the player is not on top of it
