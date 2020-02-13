@@ -522,7 +522,7 @@ function draw() {
           drawTvd(0,0, x, y);
           break;
         case 'tvr':
-          drawTvr(0,20, x, y);
+          drawTvr(27,24, x, y);
           break;
         case 'tvu':
           drawTvu(0,40, x, y);
@@ -629,6 +629,8 @@ function draw() {
     // drawTile(25,24,14,6); //bg7
     drawTile(25,25,14,7); //bg10
     drawTile(25,26,14,8); //bg13
+    drawTvr(0,20, 7, 7);
+    drawTvr(0,20, 1, 11);
 
     drawFrame(cycleLoop[currentLoopIndex], currentDirection, 0, 0);
     currentLoopIndex++;
@@ -805,7 +807,7 @@ function startGame() {
 
     function moveIsLegal(newX, newY) {
       // if newX, newY compared to board[newX][newY] is a wall, return true for collision
-      if (![1, 2, 'log', 'ht', 'hb', 'bl', 'br', 'tl', 'tr', 'r', 'hr', 'hl', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'wt', 'wb', 'wr', 'wl', 'm4', 'm8', 'm12', 'm16', 'm15', 'm14', 'm13', 'bg1', 'bg4', 'bg5', 'bg6', 'bg12', 'bg11', 'bg10', 'bg13' ].includes(grid[newY][newX])) return true;
+      if (![1, 2, 'tvr', 'log', 'ht', 'hb', 'bl', 'br', 'tl', 'tr', 'r', 'hr', 'hl', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'wt', 'wb', 'wr', 'wl', 'm4', 'm8', 'm12', 'm16', 'm15', 'm14', 'm13', 'bg1', 'bg4', 'bg5', 'bg6', 'bg12', 'bg11', 'bg10', 'bg13' ].includes(grid[newY][newX])) return true;
       else return false;
       // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
       // console.log(`newX: ${newX}, newY: ${newY}`)
