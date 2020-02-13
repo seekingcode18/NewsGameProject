@@ -164,7 +164,8 @@ function drawTile(frameX, frameY, canvasX, canvasY) {
 
 // news API
 const url = 'https://newsapi.org/v2/top-headlines?' +
-          'country=us&' +
+          'country=gb&' +
+          'category=sports&' +
           'apiKey=6516669660b24bcda45cfd1a11285e73';
 const req = new Request(url);
 let headlines = [];
