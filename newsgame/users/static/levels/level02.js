@@ -1,21 +1,21 @@
 const playerSpawnLocation = [7, 6];
 
 grid = [
-  [     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1],
-  [  'wh',     0,     0,     0,     1,     0,     0,     0,     0,     0,     0,     1,     3,     0,     0,     0,     0,     0,     0,  'wh'],
-  [  'wh',     0,     1,     8,     1,     1,     1,     1,     1,     1,     0,     1,     1,     1,     1,     1,     1,     1,     0,  'wh'],
-  [  'wh',     0,     1,     1,     1,     0,     0,     0,     0,     1,     0,     0,     0,     1,     0,     0,     0,     0,     0,  'wh'],
-  [  'wh',     0,  't1',  't2',  't3',     0,     1,     1,     0,     1,     0,     1,     0,     1,     0,     1,     1,     1,     1,  'wh'],
-  [  'wh',     0,  't4',  't5',  't6',     0,     1,     1,     0,     1,     0,     1,     0,     1,     0,     0,     0,     0,     0,  'wh'],
-  [  'wh',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
-  [  'wh',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
-  [  'wh',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
-  [  'wh',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
-  [  'wh',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
-  [  'wh',     0,     0,  't1',  't2',  't2',   't2', 't3',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
-  [  'wh',     0,     0,  't4',  't5',  't5',  't5',  't6',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
-  [  'wh',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
-  [     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1]
+  [  'wh',     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,  'wh'],
+  [  'wh',     0,     0,     0,     0,     0,     6, 'tvr',  't1',  't3',     0,     0,     0,  't7',     0, 'tvd',     0,     0,  't9',  'wh'],
+  [  'wh',     0,     0,     0,     0,     0,     0,     6,  't7',  't9', 'cr1',     0,     0,  't7',  't2',  't2',  't2',  't2',  't9',  'wh'],
+  [  'wh',     0, 'cd1',     0, 'cd1',     0,     0,     0,  't7',  't9', 'cr2',     0,     0,  't4',  't5',  't5',  't5',  't5',  't6',  'wh'],
+  [  'wh',     0,  't1',  't2',  't2',  't2',  't3',     0,  't4',  't6', 'cr3',     0,     0,     0,     0,     7,     0,     0,     0,  'wh'],
+  [  'wh',     0,  't4',  't5',  't5',  't5',  't6',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
+  [  'wh',     0,     0,     0,     0,     0,     0, 'cd1',     0, 'cd1',     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
+  [  'wh',     0,     0,     0,     0,  't1',  't2',  't2',  't2',  't2',  't3',     0,     0,     0, 'cl1',     0,  't1',  't3', 'cr1',  'wh'],
+  [  'wh',     0, 'cd1',     0,     0,  't4',  't5',  't5',  't5',  't5',  't6',     0,     0,     0, 'cl2',     0,  't7',  't9', 'cr2',  'wh'],
+  [  'wh',     0, 'cd2',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0, 'cl3',     0,  't7',  't9', 'cr3',  'wh'],
+  [  'wh',     0, 'cd3',     0,     0,     0,     0,     0,     0, 'cr1',     0,     0,     0,     0,     0, 'cl1',  't7',  't9',     8,  'wh'],
+  [  'wh',     0,     0,  't1',  't2',  't2',   't2', 't3',     0, 'cr2',     0,     0,     0,     0,     0, 'cl2',  't7',  't9', 'tvl',  'wh'],
+  [  'wh',     0,     5,  't4',  't5',  't5',  't5',  't6',     0, 'cr3',     0,     0,     0,     0,     0, 'cl3',  't4',  't6',     8,  'wh'],
+  [  'wh',     5, 'tvu',     5,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
+  [     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,  'dr',     1,     1,     1,     1,     1,     1,     1,     1,     1]
 ];
 
 const canvas = document.querySelector('canvas');
@@ -83,17 +83,34 @@ function playMusic() {
   else if (!audio.muted) audio.muted = true;
   }
 
-// LOG NPC
-let log = new Image();
-log.src = logg;
-log.onload = function() {
+// tavern NPC
+let tav = new Image();
+tav.src = char;
+tav.onload = function() {
     // do something
 }
 
-function drawLog(frameX, frameY, canvasX, canvasY) {
+function drawTvd(frameX, frameY, canvasX, canvasY) {
   // ctx.drawImage(log, frameX * tileWidth, frameY * tileWidth, 
   //               tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight);
-     ctx.drawImage(log, 0, 0, 32, 32, canvasX * blockWidth, canvasY * blockWidth, 20, 20);
+     ctx.drawImage(tav, 0, 8, 16, 16, canvasX * blockWidth, canvasY * blockWidth, spriteSWidth, spriteSHeight);
+}
+function drawTvr(frameX, frameY, canvasX, canvasY) {
+  // ctx.drawImage(log, frameX * tileWidth, frameY * tileWidth, 
+  //               tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight);
+     ctx.drawImage(tav, 0, 40, 16, 16, canvasX * blockWidth, canvasY * blockWidth, spriteSWidth, spriteSHeight);
+}
+
+function drawTvu(frameX, frameY, canvasX, canvasY) {
+  // ctx.drawImage(log, frameX * tileWidth, frameY * tileWidth, 
+  //               tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight);
+     ctx.drawImage(tav, -1, 70, 16, 16, canvasX * blockWidth, canvasY * blockWidth, spriteSWidth, spriteSHeight);
+}
+
+function drawTvl(frameX, frameY, canvasX, canvasY) {
+  // ctx.drawImage(log, frameX * tileWidth, frameY * tileWidth, 
+  //               tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight);
+     ctx.drawImage(tav, -2, 103, 16, 16, canvasX * blockWidth, canvasY * blockWidth, spriteSWidth, spriteSHeight);
 }
 
 //PLAYER SPRITE
@@ -293,8 +310,8 @@ function draw() {
           drawTile(11,1,x,y);
           break;
         case 't3':
-        drawTile(12,1,x,y);
-        break;
+          drawTile(12,1,x,y);
+          break;
         case 't4':
           drawTile(10,3,x,y);
           break;
@@ -302,23 +319,68 @@ function draw() {
           drawTile(11,3,x,y);
           break;
         case 't6':
-        drawTile(12,3,x,y);
-        break;
-        case 8:
-          drawTile(0,0,x,y);
+          drawTile(12,3,x,y);
+          break;
+        case 't7':
+          drawTile(10,2,x,y);
+          break;
+        case 't8':
+          drawTile(11,2,x,y);
+          break;
+        case 't9':
+          drawTile(12,2,x,y);
+          break;
+        case 'cd1':
+          drawTile(15,4,x,y);
+          break;
+        case 'cd2':
+          drawTile(15,5,x,y);
+          break;
+        case 'cd3':
+          drawTile(15,6,x,y);
+          break;
+        case 'cl1':
+          drawTile(16,4,x,y);
+          break;
+        case 'cl2':
+          drawTile(16,5,x,y);
+          break;
+        case 'cl3':
+          drawTile(16,6,x,y);
+          break;
+        case 'cr1':
+          drawTile(18,4,x,y);
+          break;
+        case 'cr2':
+          drawTile(18,5,x,y);
+          break;
+        case 'cr3':
+          drawTile(18,6,x,y);
+          break;
+        case 'dr':
+          drawTile(5,2,x,y);
           break;
         case 2:
           drawTile(1,14,x,y);
           break;
-        case 'log':
-          drawLog(0,0, x, y);
+        case 'tvd':
+          drawTvd(0,0, x, y);
+          break;
+        case 'tvr':
+          drawTvr(0,20, x, y);
+          break;
+        case 'tvu':
+          drawTvu(0,40, x, y);
+          break;
+        case 'tvl':
+          drawTvl(0,60, x, y);
           break;
         case 5:
         case 6:
         case 7:
         case 8:
         case 9:
-          drawTile(5,9,x,y);
+          drawTile(0,1,x,y);
           break;
         case 3:
           drawExit(x, y);
@@ -377,7 +439,7 @@ function draw() {
   }
 
   // exit when player is on exit block
-  if (currentLocationValue == 3) {
+  if (currentLocationValue == 'dr') {
     fetch(`http://127.0.0.1:8000/user/${id}/`, {
       headers: {"Content-Type": "application/json; charset=utf-8",
       "X-CSRFToken": document.querySelector("#csrf").value
@@ -509,7 +571,7 @@ function startGame() {
 
     function moveIsLegal(newX, newY) {
       // if newX, newY compared to board[newX][newY] is a wall, return true for collision
-      if (![1, 2, 'log', 'ht', 'hb', 'bl', 'br', 'tl', 'tr', 'r', 'hr', 'hl'].includes(grid[newY][newX])) return true;
+      if (![1, 2, 't1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 'wh', 'tvu', 'tvd', 'tvl', 'tvr',].includes(grid[newY][newX])) return true;
       else return false;
       // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
       // console.log(`newX: ${newX}, newY: ${newY}`)
