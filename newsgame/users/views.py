@@ -24,6 +24,14 @@ def level02(request):
 def level03(request):
     return render(request, 'level03.html')
 
+def highscores(request):
+    # select 10 highest scores and send them with their username to the template
+    queries = CustomUser.objects.all().order_by('-points').values('username', 'points')[:10]
+    context = {
+        "users": list(queries)
+    }
+    return render(request, 'highscores.html', context=context)
+
 class SignUp(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
@@ -31,5 +39,5 @@ class SignUp(CreateView):
 
 # query the db for all users
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = CustomUser.objects.all()
+    queryset = CustomUser.objects.all().order_by('-points')
     serializer_class = UserSerializer

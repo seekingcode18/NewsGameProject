@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% load static %}
+    <p>Hi <span id="username">{{user.username}}</span></p>
+    <p>points: <span id="points">{{user.points}}</span></p>
+    <a href="{% url 'logout'%}">log out</a>
+    <a href="{% url 'world'%}">World map</a>
+    <h2>High Scores</h2>
+<script>
+    fetch('http://127.0.0.1:8000/user/')
+        .then(res => res.json())
+        .then(res => console.log(res))
+</script>
+<table>
+{% for user in users %}
+    <tr>
+        <td>{{user.username}}</td>
+        <td>{{user.points}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <p>You don't appear to be logged in</p>
+    <a href="{% url 'login'%}">login</a>
+    <a href="{% url 'signup'%}">signup</a>
+    <p>Welcome to World! :)</p>
+{% endif %}
+{% endblock content %}
