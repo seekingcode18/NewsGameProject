@@ -1,4 +1,4 @@
-const playerSpawnLocation = [5, 10];
+const playerSpawnLocation = [18, 6];
 
 grid = [
   [ 'm01', 'm02', 'm02', 'm03', 'm04',  'wt',  'wt',  'wt',  'wt',  'wt',  'wt',  'wt',  'wt',  'wt', 'wtr',  'aq',  'aq',  'aq',  'aq',  'aq'],
@@ -7,7 +7,7 @@ grid = [
   [  'm9', 'm10', 'm10', 'm11', 'm12',     0,     0,     0, 'bd1', 'bd2', 'bd3',     0,     0,     0,  'wr',  'aq',  'aq',  'aq',  'aq',  'aq'],
   [ 'm13', 'm14', 'm14', 'm15', 'm16',     0,     0,     0, 'bd4', 'bd5', 'bd6',     0,     0,     0, 'bg1', 'bg2',  'aq',  'aq',  'aq',  'aq'],
   [  'wl',     0,     5,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0, 'bg4', 'bg5', 'bg6', 'bg6', 'bg6', 'bg6'],
-  [  'wl',     0,     0,     0,     0, 'bl1',     0,     6,  'f1',  'f2',  'f3',     0,     0,     0, 'bg7', 'bg8', 'bg9', 'bg9', 'bg9', 'bg9'],
+  [  'wl',     0,     0,     0,     0, 'bl1',     0,     6,  'f1',  'f2',  'f3',     0,     0,     0, 'bg7', 'bg8', 'bg9', 'bg9', 'bg9',     3],
   [  'wl',     0,     0,     0,     0, 'bl2',     6, 'tvr',  'f4',  'f5',  'f6',     0,     0,     0,'bg10','bg11','bg12','bg12','bg12','bg12'],
   [  'wl',     0,     0,     0,     0, 'bl3',     0,     6,  'f7',  'f8',  'f9',     0,     0,     0,'bg13','bg14','bg15','bg15','bg15','bg15'],
   [  'wl',     0,     0,     0,     0, 'bl4',     0,     0,     0,     0,     0,     0,     0,     0,  'wr','bg17',  'aq',  'aq',  'aq',  'aq'],
@@ -531,7 +531,7 @@ function draw() {
           drawTvl(0,60, x, y);
           break;
         case 'bg1':
-          drawTile(25,22,x,y);
+          drawTile(24,1,x,y);
           break;
         case 'bg2':
           drawTile(5,3,x,y);
@@ -540,7 +540,7 @@ function draw() {
           drawTile(27,22,x,y);
           break;
         case 'bg4':
-          drawTile(25,23,x,y);
+          drawTile(27,24,x,y);
           break;
         case 'bg5':
           drawTile(26,23,x,y);
@@ -549,7 +549,7 @@ function draw() {
           drawTile(27,23,x,y);
           break;
         case 'bg7':
-          drawTile(25,24,x,y);
+          drawTile(27,24,x,y);
           break;
         case 'bg8':
           drawTile(26,24,x,y);
@@ -558,7 +558,7 @@ function draw() {
           drawTile(27,24,x,y);
           break;
         case 'bg10':
-          drawTile(25,25,x,y);
+          drawTile(27,24,x,y);
           break;
         case 'bg11':
           drawTile(26,25,x,y);
@@ -567,7 +567,7 @@ function draw() {
           drawTile(27,25,x,y);
           break;
         case 'bg13':
-          drawTile(25,26,x,y);
+          drawTile(27,24,x,y);
           break;
         case 'bg14':
           drawTile(26,26,x,y);
@@ -610,7 +610,7 @@ function draw() {
           drawTile(27,24,x,y);
           break;
         case 3:
-          drawExit(x, y);
+          drawTile(27, 24, x, y);
           break;
         case 'a':
         case 'b':
@@ -624,6 +624,11 @@ function draw() {
     }
     drawTile(26,27,15,9);
     drawTile(26,22,15,4);
+    drawTile(25,22,14,4); //bg1
+    drawTile(25,23,14,5); //bg4
+    // drawTile(25,24,14,6); //bg7
+    drawTile(25,25,14,7); //bg10
+    drawTile(25,26,14,8); //bg13
 
     drawFrame(cycleLoop[currentLoopIndex], currentDirection, 0, 0);
     currentLoopIndex++;
@@ -800,7 +805,7 @@ function startGame() {
 
     function moveIsLegal(newX, newY) {
       // if newX, newY compared to board[newX][newY] is a wall, return true for collision
-      if (![1, 2, 'log', 'ht', 'hb', 'bl', 'br', 'tl', 'tr', 'r', 'hr', 'hl', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9'].includes(grid[newY][newX])) return true;
+      if (![1, 2, 'log', 'ht', 'hb', 'bl', 'br', 'tl', 'tr', 'r', 'hr', 'hl', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'wt', 'wb', 'wr', 'wl', 'm4', 'm8', 'm12', 'm16', 'm15', 'm14', 'm13', 'bg1', 'bg4', 'bg5', 'bg6', 'bg12', 'bg11', 'bg10', 'bg13' ].includes(grid[newY][newX])) return true;
       else return false;
       // console.log(`oldX: ${player.x}, oldY: ${player.y}`)
       // console.log(`newX: ${newX}, newY: ${newY}`)
