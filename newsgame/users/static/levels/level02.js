@@ -1,21 +1,21 @@
 const playerSpawnLocation = [7, 6];
 
 grid = [
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 0, 0, 1],
-  [1, 0, 1, 8, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-  [1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
-  [1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1],
-  [1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1],
-  [1, 0, 0, 0, 1, 0, 1, 2, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1],
-  [1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1],
-  [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1],
-  [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 6, 0, 0, 1, 0, 1],
-  [1, 0, 1, 0, 0, 0, 0, 0, 1, 9, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1],
-  [1, 0, 1, 7, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 5, 1, 0, 1],
-  [1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1],
-  [1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  [     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1],
+  [  'wh',     0,     0,     0,     1,     0,     0,     0,     0,     0,     0,     1,     3,     0,     0,     0,     0,     0,     0,  'wh'],
+  [  'wh',     0,     1,     8,     1,     1,     1,     1,     1,     1,     0,     1,     1,     1,     1,     1,     1,     1,     0,  'wh'],
+  [  'wh',     0,     1,     1,     1,     0,     0,     0,     0,     1,     0,     0,     0,     1,     0,     0,     0,     0,     0,  'wh'],
+  [  'wh',     0,  't1',  't2',  't3',     0,     1,     1,     0,     1,     0,     1,     0,     1,     0,     1,     1,     1,     1,  'wh'],
+  [  'wh',     0,  't4',  't5',  't6',     0,     1,     1,     0,     1,     0,     1,     0,     1,     0,     0,     0,     0,     0,  'wh'],
+  [  'wh',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
+  [  'wh',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
+  [  'wh',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
+  [  'wh',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
+  [  'wh',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
+  [  'wh',     0,     0,  't1',  't2',  't2',   't2', 't3',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
+  [  'wh',     0,     0,  't4',  't5',  't5',  't5',  't6',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
+  [  'wh',     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,  'wh'],
+  [     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1]
 ];
 
 const canvas = document.querySelector('canvas');
@@ -23,7 +23,7 @@ const canvas = document.querySelector('canvas');
 // canvas.style.backgroundPosition = '16px 16px';
 // canvas.style.backgroundRepeat = 'repeat';
 // canvas.style.backgroundSize = "0px 0px";
-canvas.style.backgroundColor = '#3bbf41';
+canvas.style.backgroundColor = '#93775c';
 const ctx = canvas.getContext('2d');
 // const playerSpawnLocation = [8, 1];
 
@@ -77,9 +77,9 @@ let currentDirection = 0;
 
 // ENVIRONMENT TILES
 
-let tiles = new Image();
-tiles.src = tileSet;
-tiles.onload = function() {
+let inner = new Image();
+inner.src = innerSet;
+inner.onload = function() {
   // drawTile(0,0,0,0);
   // well();
 };
@@ -91,7 +91,7 @@ const tileSWidth = 20;
 const tileSHeight = 20;
 
 function drawTile(frameX, frameY, canvasX, canvasY) {
-  ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth, 
+  ctx.drawImage(inner, frameX * tileWidth, frameY * tileWidth, 
                 tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight); // brick 1
 }                                  //^   x    /    y   coordinates
 
@@ -148,40 +148,6 @@ const outputBox = document.querySelector('.output');
 // set up the headline / link
 const headlineToDisplay = document.createElement('p');
 const linkToArticle = document.createElement('a');
-
-// 0 = blank space
-// 1 = wall
-// 2 = player spawn point
-// 3 = exit
-// 5 through 9 = NPCs delivering news
-
-// 1 - spawn 8,8
-// grid = [
-//   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-//   [1, 6, 0, 0, 0, 0, 0, 1, 5, 1],
-//   [1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
-//   [1, 1, 0, 0, 0, 1, 0, 0, 0, 1],
-//   [1, 0, 0, 1, 0, 1, 1, 1, 0, 1],
-//   [1, 0, 1, 1, 0, 0, 0, 1, 0, 1],
-//   [1, 0, 0, 1, 1, 1, 0, 1, 0, 1],
-//   [1, 1, 0, 1, 7, 1, 0, 1, 0, 1],
-//   [1, 3, 0, 0, 0, 0, 0, 1, 2, 1],
-//   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-// ];
-
-// 2 - spawn 8,1
-// grid = [
-//   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-//   [1, 0, 3, 1, 5, 0, 0, 1, 2, 1],
-//   [1, 0, 1, 1, 1, 1, 0, 1, 0, 1],
-//   [1, 0, 0, 0, 0, 1, 0, 0, 0, 1],
-//   [1, 1, 9, 1, 0, 1, 0, 1, 1, 1],
-//   [1, 1, 1, 1, 0, 1, 0, 0, 0, 1],
-//   [1, 0, 0, 0, 0, 1, 0, 1, 0, 1],
-//   [1, 8, 1, 1, 1, 1, 0, 1, 0, 1],
-//   [1, 0, 0, 0, 0, 0, 0, 0, 6, 1],
-//   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-// ];
 
 let player = {
   x: playerSpawnLocation[0],
@@ -258,221 +224,41 @@ function draw() {
       //     if 1, draw wall
       switch(grid[y][x]) {
         case 1:
-          drawTile(2,15,x,y);
+          drawTile(7,14,x,y);
           break;
         case 0:
-          drawTile(5,9,x,y);
+          drawTile(0,1,x,y);
           break;
+        case 'wh':
+          drawTile(7,13,x,y);
+          break;
+        case 't1':
+          drawTile(10,1,x,y);
+          break;
+        case 't2':
+          drawTile(11,1,x,y);
+          break;
+        case 't3':
+        drawTile(12,1,x,y);
+        break;
+        case 't4':
+          drawTile(10,3,x,y);
+          break;
+        case 't5':
+          drawTile(11,3,x,y);
+          break;
+        case 't6':
+        drawTile(12,3,x,y);
+        break;
         case 8:
           drawTile(0,0,x,y);
           break;
         case 2:
           drawTile(1,14,x,y);
           break;
-        case 'bl':
-          drawTile(1,15,x,y);
-          break;
-        case 'tl':
-          drawTile(1,13,x,y);
-          break;
-        case 'tr':
-          drawTile(3,13,x,y);
-          break;
-        case 'br':
-          drawTile(3,15,x,y);
-          break;
-        case 'hl':
-          drawTile(0,16,x,y);
-          break;
-        case 'hr':
-          drawTile(1,16,x,y);
-          break;
-        case 'ht':
-          drawTile(0,14,x,y);
-          break;
-        case 'hb':
-          drawTile(0,15,x,y);
-          break;
-        case 'a1':
-          drawTile(5,17,x,y);
-          break;
-        case 'a2':
-          drawTile(6,17,x,y);
-          break;
-        case 'a3':
-          drawTile(6,16,x,y);
-          break;
-        case 'a4':
-          drawTile(5,16,x,y);
-          break;
-        case 'r':
-          drawTile(6,5,x,y);
-          break;
         case 'log':
           drawLog(0,0, x, y);
           break;
-        case 'h1':
-          drawTile(6,0,x,y);
-          break;
-        case 'h2':
-          drawTile(7,0,x,y);
-          break;
-        case 'h3':
-          drawTile(8,0,x,y);
-          break;
-        case 'h4':
-          drawTile(9,0,x,y);
-          break;
-        case 'h5':
-          drawTile(10,0,x,y);
-          break;
-        case 'h6':
-          drawTile(6,1,x,y);
-          break;
-        case 'h7':
-          drawTile(7,1,x,y);
-          break;
-        case 'h8':
-          drawTile(8,1,x,y);
-          break;
-        case 'h9':
-          drawTile(9,1,x,y);
-          break;
-        case 'h10':
-          drawTile(10,1,x,y);
-          break;
-        case 'h11':
-          drawTile(6,2,x,y);
-          break;
-        case 'h12':
-          drawTile(7,2,x,y);
-          break;
-        case 'h13':
-          drawTile(8,2,x,y);
-          break;
-        case 'h14':
-          drawTile(9,2,x,y);
-          break;
-        case 'h15':
-          drawTile(10,2,x,y);
-          break;
-        case 'h16':
-          drawTile(6,3,x,y);
-          break;
-        case 'h17':
-          drawTile(7,3,x,y);
-          break;
-        case 'h18':
-          drawTile(8,3,x,y);
-          break;
-        case 'h19':
-          drawTile(9,3,x,y);
-          break;
-        case 'h20':
-          drawTile(10,3,x,y);
-          break;
-        case 'h21':
-          drawTile(6,4,x,y);
-          break;
-        case 'h22':
-          drawTile(7,4,x,y);
-          break;
-        case 'h23':
-          drawTile(8,4,x,y);
-          break;
-        case 'h24':
-          drawTile(9,4,x,y);
-          break;
-        case 'h25':
-          drawTile(10,4,x,y);
-          break; 
-        case 'p1':
-          drawTile(0,3,x,y);
-          break; 
-        case 'p2':
-          drawTile(1,3,x,y);
-          break; 
-        case 'p3':
-          drawTile(2,3,x,y);
-          break;  
-        case 'p4':
-          drawTile(0,4,x,y);
-          break;
-        case 'p5':
-          drawTile(1,4,x,y);
-          break; 
-        case 'p6':
-          drawTile(2,4,x,y);
-          break;  
-        case 'p7':
-          drawTile(0,5,x,y);
-          break; 
-        case 'p8':
-          drawTile(1,5,x,y);
-          break; 
-        case 'p9':
-          drawTile(2,5,x,y);
-          break;  
-        case 'p10':
-          drawTile(0,6,x,y);
-          break; 
-        case 'p11':
-          drawTile(1,6,x,y);
-          break; 
-        case 'p12':
-          drawTile(0,7,x,y);
-          break;  
-        case 'p13':
-          drawTile(1,7,x,y);
-          break;
-        case 'c1':
-          drawTile(22,2,x,y);
-          break;
-        case 'c2':
-          drawTile(23,2,x,y);
-          break;
-        case 'c3':
-          drawTile(24,2,x,y);
-          break;
-        case 'c4':
-          drawTile(22,3,x,y);
-          break;
-        case 'c5':
-          drawTile(23,3,x,y);
-          break;
-        case 'c6':
-          drawTile(24,3,x,y);
-          break;
-        case 'c7':
-          drawTile(22,4,x,y);
-          break;
-        case 'c8':
-          drawTile(23,4,x,y);
-          break;
-        case 'c9':
-          drawTile(24,4,x,y);
-          break;
-        case 'c10':
-          drawTile(22,5,x,y);
-          break;
-        case 'c11':
-          drawTile(23,5,x,y);
-          break;
-        case 'c12':
-          drawTile(24,5,x,y);
-          break;
-        case 'c13':
-          drawTile(7,27,x,y);
-          break;
-        case 'c14':
-          drawTile(8,27,x,y);
-          break;
-        case 'c15':
-          drawTile(7,28,x,y);
-          break;
-        case 'c16':
-          drawTile(8,28,x,y);
-          break;  
         case 5:
         case 6:
         case 7:
