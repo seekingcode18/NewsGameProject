@@ -566,14 +566,6 @@ function scoreHandler(currentLocationValue) {
   headlines[currentLocationValue].clicked = true
 }
 
-function displayScore() {
-  const scoreBox = document.querySelector('.scoreBox');
-  const scoreElem = document.createElement('p')
-  scoreElem.innerHTML = `Score (from js) - ${score}`
-  scoreElem.id = 'scoreBox'
-  scoreBox.appendChild(scoreElem)
-}
-
 // function moveUp() {
 //   player.y--;
 //   draw();
@@ -617,7 +609,6 @@ function startGame() {
     else if (e.keyCode == 68 && moveIsLegal(player.x + 1, player.y))
       moveRight();
   });
-  displayScore();
 }
 
     // function scoreHandler(currentLocationValue) {
