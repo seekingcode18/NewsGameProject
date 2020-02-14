@@ -15,7 +15,7 @@ grid = [
   [    's',    's',   3,     3, 'b4', 'ti',  'ti','ti','b9','b10','ti','ti','ti','ti','b3',   3,   's',   's',    's',    's'],
   [    's',    's',   's',     3, 'a1', 'b6',  'b8','ti','ti','ti','ti','ti','b7','b6','a2',   3,   's',   's',    's',    's'],
   [    's',    's','s',    's',    3,    3,  'a1','b8','ti','ti','ti','b7','a2',  3,  3,    's',   's',   's' ,   's',    's'],
-  [    's',    's',   's',     's',    's',    3,     3,'a1','tb','tb','tb','a2',   3,   'b2',   'b3',    'b4',   'b5',   'b6',    'b7',    'b8']
+  [    's',    's',   's',     's',    's',    3,     3,'a1','tb','tb','tb','a2',   3,   's',   's',    's',   's',   's',    's',    's']
 ];
 
 const canvas = document.querySelector('canvas');
@@ -426,5 +426,5 @@ function startGame() {
       if (![1, 2, 'log', 'ht', 'hb', 'bl', 'br', 'tl', 'tr', 'r', 'hr', 'hl'].includes(grid[newY][newX])) return true;
       else return false;
     }
-    
+
     startGame();
