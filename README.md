@@ -14,16 +14,16 @@
 
 
 ## Installation
-Assuming you have Python 3 and PIP installed:
-```pip install django```
-```pip install django-cors-headers```
-```pip install django-rest-framework```
-```git clone ************``` into a new directory
-Navigate into the repo you just cloned
-```cd newsgame```
-```python manage.py test``` to see the 18 tests passing
-```python manage.py runserver```
-Navigate to ```localhost:8000``` in your browser to begin
+* Assuming you have Python 3 and PIP installed:
+* ```pip install django```
+* ```pip install django-cors-headers```
+* ```pip install django-rest-framework```
+* ```git clone https://github.com/Ledwos/NewsGameProject.git``` into a new directory
+* Navigate into the repo you just cloned
+* ```cd newsgame```
+* ```python manage.py test``` to see the 18 tests passing
+* ```python manage.py runserver```
+* Navigate to ```localhost:8000``` in your browser to begin
 
 
 ## About
