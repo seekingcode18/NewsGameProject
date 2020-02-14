@@ -33,6 +33,36 @@ input {
   font-weight: bold;
 }
 
+/* column layout */
+.world-wrapper {
+  padding-top: 4rem;
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.weather {
+  text-align: center;
+}
+.weather > p {
+  padding: 0;
+  margin: 0;
+}
+.instructions > li {
+  list-style-type: none;
+  padding-bottom: 6px;
+}
+.instructions > li::before {
+  content: '';
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  padding-right: 6px;
+  background-image: url('./ruby.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 /* home page before log in */
 .splash {
   display: flex;
@@ -58,7 +88,6 @@ input {
   transition: 0.2s;
   border-radius: 5px;
 }
-
 #mute {
   display: inline-block;
 }
@@ -106,11 +135,6 @@ input[type="text"], input[type="password"], input[type="email"] {
   padding-top: 2rem;
 }
 /* world */
-.world-wrapper {
-  width: 80%;
-  margin: auto;
-}
-
 header {
   background: var(--brown);
   color: white;
@@ -146,34 +170,34 @@ canvas {
   border: 1px black solid;
   background: #eeeeee;
 }
-.console {
-  padding: 2rem;
-  font-size: 1.25rem;
-  font-family: monospace;
-  background: #ddd;
-  width: 30%;
-  font-weight: bold;
-  margin-top: 1rem;
-}
-.output {
+.output-bg {
   padding: 1rem;
-  display: flex;
-  align-items: center;
-  text-align: center;
   background-image: url('./scroll-2.png');
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 45%;
   margin: auto;
+  min-height: 220px;
+  height: 220px;
+}
+.output {
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   font-weight: bold;
-  margin-top: 1rem;
-  min-height: 180px;
 }
 .output > * {
   margin: 0;
   padding: 0;
 }
+.controls {
+  display: flex;
+  justify-content: center;
+}
+/* highscores */
 table {
   margin: auto;
   border-spacing: 0;

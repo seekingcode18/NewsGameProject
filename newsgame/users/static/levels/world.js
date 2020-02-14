@@ -130,7 +130,7 @@ const tileSWidth = 20;
 const tileSHeight = 20;
 
 function drawTile(frameX, frameY, canvasX, canvasY) {
-  ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth, 
+  ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth,
                 tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight); // brick 1
 }                                  //^   x    /    y   coordinates
 
@@ -356,43 +356,43 @@ function draw() {
           break;
         case 'h25':
           drawTile(10,4,x,y);
-          break; 
+          break;
         case 'p1':
           drawTile(0,3,x,y);
-          break; 
+          break;
         case 'p2':
           drawTile(1,3,x,y);
-          break; 
+          break;
         case 'p3':
           drawTile(2,3,x,y);
-          break;  
+          break;
         case 'p4':
           drawTile(0,4,x,y);
           break;
         case 'p5':
           drawTile(1,4,x,y);
-          break; 
+          break;
         case 'p6':
           drawTile(2,4,x,y);
-          break;  
+          break;
         case 'p7':
           drawTile(0,5,x,y);
-          break; 
+          break;
         case 'p8':
           drawTile(1,5,x,y);
-          break; 
+          break;
         case 'p9':
           drawTile(2,5,x,y);
-          break;  
+          break;
         case 'p10':
           drawTile(0,6,x,y);
-          break; 
+          break;
         case 'p11':
           drawTile(1,6,x,y);
-          break; 
+          break;
         case 'p12':
           drawTile(0,7,x,y);
-          break;  
+          break;
         case 'p13':
           drawTile(1,7,x,y);
           break;
@@ -446,7 +446,7 @@ function draw() {
           break;
         case 'col1':
           drawTile(1,4,x,y);
-          break;  
+          break;
         case 5:
         case 6:
         case 7:
@@ -465,7 +465,7 @@ function draw() {
           drawLevelEntrance(x, y)
           break;
         }
-      } 
+      }
     }
     drawTile(2,17,10,3);
     drawTile(4,17,11,3);
