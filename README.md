@@ -1,6 +1,6 @@
 # NewsGameProject
 
-[Dan Ledwos](https://github.com/Ledwos)
+[Dan Ledwos](https://github.com/Ledwos) +
 [Christopher King](https://github.com/seekingcode18)
 
 ## Contents
