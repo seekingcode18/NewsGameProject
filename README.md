@@ -1,15 +1,15 @@
 # NewsGameProject
 
-[Dan Ledwos](https://github.com/Ledwos) +
+[Dan Ledwos](https://github.com/Ledwos) |
 [Christopher King](https://github.com/seekingcode18)
 
 ## Contents
-[Installation](#installation)
-[About](#about)
-[User Stories](#user-stories)
-[Technologies](#technologies)
-[Methodologies and Processes](#methodologies-and-processes)
-[Reflections](#reflections)
+[Installation](#installation) |
+[About](#about) |
+[User Stories](#user-stories) |
+[Technologies](#technologies) |
+[Methodologies and Processes](#methodologies-and-processes) |
+[Reflections](#reflections) |
 [Extras](#extras)
 
 
