@@ -43,20 +43,21 @@ function handleWeather(position) {
   let weatherApiKey = 'bd39648442d5b7099e03718b9da3f06b';
   let weatherApiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}`
 
-  fetch(weatherApiUrl)
-    .then(res => res.json())
-    .then(res => {
-      console.log(res)
-      // show temp in deg C not K
-      const temp = Math.floor(res.main.temp - 273.15)
-      weatherTemp.innerHTML =  `The weather in ${res.name} is ${temp}&deg;C and ${res.weather[0].main.toLowerCase()}.`
-      weatherBox.appendChild(weatherTemp)
+  // TURN BACK ON WHEN RUNNING
+  // fetch(weatherApiUrl)
+  //   .then(res => res.json())
+  //   .then(res => {
+  //     console.log(res)
+  //     // show temp in deg C not K
+  //     const temp = Math.floor(res.main.temp - 273.15)
+  //     weatherTemp.innerHTML =  `The weather in ${res.name} is ${temp}&deg;C and ${res.weather[0].main.toLowerCase()}.`
+  //     weatherBox.appendChild(weatherTemp)
 
-      // set icon to img tag
-      const iconCode = res.weather[0].icon.replace('n', 'd')
-      weatherIcon.src = `http://openweathermap.org/img/wn/${iconCode}@2x.png`
-      weatherBox.appendChild(weatherIcon)
-    })
+  //     // set icon to img tag
+  //     const iconCode = res.weather[0].icon.replace('n', 'd')
+  //     weatherIcon.src = `http://openweathermap.org/img/wn/${iconCode}@2x.png`
+  //     weatherBox.appendChild(weatherIcon)
+  //   })
 }
 
 // ALL THINGS MUSIC RELATED
@@ -151,6 +152,42 @@ function drawTile(frameX, frameY, canvasX, canvasY) {
   ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth, 
                 tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight); // brick 1
 }
+
+//ANIMATED FOUNTAIN
+
+function drawFtn(frameX, frameY, canvasX, canvasY) {
+  ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth, 
+                tileWidth * 3, tileHeight * 3, canvasX * blockWidth, canvasY * blockWidth, tileSWidth * 3, tileSHeight * 3); // brick 1
+}
+
+// fountain canvas location variables
+ftnX = 3 * 20;
+ftnY = 11 * 20;
+ftnX2 = ftnX + (3 * 20);
+ftnY2 = ftnY + (3 * 20);
+let ftnLoop = [22, 25, 28];
+let currentFtnLoop = 0;
+let ftnFrame = 0;
+
+function aniFtn() {
+  ftnFrame++;
+  if (ftnFrame < 15){
+    window.requestAnimationFrame(aniFtn);
+    return;
+  }
+  ftnFrame = 0;
+  ctx.clearRect( ftnX, ftnY, ftnX2, ftnY2);
+  drawFtn(ftnLoop[currentFtnLoop], 9, 3, 11);
+  currentFtnLoop++;
+  if (currentFtnLoop >= ftnLoop.length) {
+    currentFtnLoop = 0;
+  }
+  window.requestAnimationFrame(aniFtn);
+};
+
+// drawFtn(22,9, 3, 11);
+// drawFtn(25,9, 6, 11);
+// drawFtn(28,9, 9, 11);
 
 // news API
 const url = 'https://newsapi.org/v2/top-headlines?' +
@@ -528,6 +565,11 @@ function draw() {
     drawTile(25,26,14,8); //bg13
     drawTvr(0,20, 7, 7);
     drawTvr(0,20, 1, 11);
+    aniFtn();
+    // ctx.drawImage(tiles, 0, 0, 16, 16, 0, 0, 16, 16);
+    // drawFtn(22,9, 3, 11);
+    // drawFtn(25,9, 6, 11);
+    // drawFtn(28,9, 9, 11);
 
     drawFrame(cycleLoop[currentLoopIndex], currentDirection, 0, 0);
     currentLoopIndex++;
