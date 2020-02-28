@@ -56,15 +56,12 @@ Our aim was to engage young people in the news. We both experienced a lack of in
 
 
 ## Technologies
-* Python
-* Django
-* Django Rest Framework
-* unittest
-* HTML
-* Jinja2
-* CSS
-* JavaScript
+* Python / unittest
+* Django / Django Rest Framework
 * SQLite
+* Jinja2
+* HTML / CSS
+* JavaScript
 * Canvas API
 * News API
 * Geolocation API
@@ -80,8 +77,6 @@ We started by brainstorming ideas and settled on making a game to engage young p
 
 ## Reflections
 This was a really fun project to work on. We achieved a very basic MVP after 2 days and then set about improving it and working on incremental goals, including: collision detection, a persistent score, a leaderboard of highscores, localised weather forecast and topically sorted news articles. We ran into a few challenges throughout the week including working with relative URLs in Django, connecting to the database, and working with sprites in the canvas, but these were all overcome by perseverance, research and reading the documentation. This has made us excited to create more games in the future as a fun way of improving our coding abilities.
-
-![screenshot of home page](nq-screenshot04.jpg)
 
 
 ### Testing
