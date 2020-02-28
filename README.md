@@ -1,7 +1,14 @@
-# NewsGameProject
+# NewsQuest
 
 [Dan Ledwos](https://github.com/Ledwos) |
 [Christopher King](https://github.com/seekingcode18)
+
+
+## Overview
+This was the final project for our coding bootcamp, Futureproof. We had 5 days to produce a fully functional web application with authentication, testing and a polished user experience.
+
+Our aim was to engage young people in the news. We both experienced a lack of interest in current affairs when we were younger so we decided to gamify the news and award points to players when they read an article.
+
 
 ## Contents
 [Installation](#installation) |
@@ -10,6 +17,7 @@
 [Technologies](#technologies) |
 [Methodologies and Processes](#methodologies-and-processes) |
 [Reflections](#reflections) |
+[Testing](#testing) |
 [Extras](#extras)
 
 
@@ -24,10 +32,6 @@
 * ```python manage.py test``` to see the 18 tests passing
 * ```python manage.py runserver```
 * Navigate to ```localhost:8000``` in your browser to begin
-
-
-## About
-This is our final project for the Futureproof bootcamp. We decided to create a simple game that engages young people in the news by awarding them points for reading articles.
 
 
 ## User Stories
@@ -72,10 +76,18 @@ We started by brainstorming ideas and settled on making a game to engage young p
 This was a really fun project to work on. We achieved a very basic MVP after 2 days and then set about improving it and working on incremental goals, including: collision detection, a persistent score, a leaderboard of highscores, localised weather forecast and topically sorted news articles. We ran into a few challenges throughout the week including working with relative URLs in Django, connecting to the database, and working with sprites in the canvas, but these were all overcome by perseverance, research and reading the documentation. This has made us excited to create more games in the future as a fun way of improving our coding abilities.
 
 
+### Testing
+We were able to achieve decent backend testing coverage using unittest to test the majority of our views, models and URLs. We didn't have time to test the frontend JavaScript but probably would have used Mocha & Chai. We would seek to test that the following:
+* map is drawn correctly after the start() function is called
+* player's position properties are updated when keys are pressed
+* score increments when player reads the news (stands on given blocks)
+* that the results of the API call are stored correctly, ready to be displayed
+
+
 ## Extras
 If we had more time, we would have liked to implement the following features:
 * More variety in gameplay, e.g. more levels, dangers or enemies that deduct points, dynamic spawn points, customisable characters, levels & ribbons, in-game weather
-* Getting news from user's location found via geolocation
+* Getting news from user's location via geolocation
 * Animation & smooth movement with several refreshes per second rather than once per key press
 * Retrieving the news by web scraping (this was a stretch goal - we got a basic scrape working but weren't able to categorise it since BBC Newsbeats didn't display categories on its home page)
 * Natural language processing to scan the text of a news article and identify key words to display under the headline
