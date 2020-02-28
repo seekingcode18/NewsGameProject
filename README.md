@@ -9,6 +9,8 @@ This was the final project for our coding bootcamp, Futureproof. We had 5 days t
 
 Our aim was to engage young people in the news. We both experienced a lack of interest in current affairs when we were younger so we decided to gamify the news and award points to players when they read an article.
 
+![screenshot of home page](nq-screenshot02.jpg)
+
 
 ## Contents
 [Installation](#installation) |
@@ -32,6 +34,8 @@ Our aim was to engage young people in the news. We both experienced a lack of in
 * ```python manage.py test``` to see the 18 tests passing
 * ```python manage.py runserver```
 * Navigate to ```localhost:8000``` in your browser to begin
+
+![screenshot of home page](nq-screenshot01.jpg)
 
 
 ## User Stories
@@ -71,9 +75,13 @@ Our aim was to engage young people in the news. We both experienced a lack of in
 ## Methodologies & Processes
 We started by brainstorming ideas and settled on making a game to engage young people in the news. We thought this was a problem worthy of our attention as we both experienced a disinterest in the news when we were younger and noticed the same in our peers. We decided a very simple MVP was best given the short time frame (1 week). This MVP was to let a user log in, move a character around a maze, and encounter other characters who would read them the news headlines.
 
+![screenshot of home page](nq-screenshot03.jpg)
+
 
 ## Reflections
 This was a really fun project to work on. We achieved a very basic MVP after 2 days and then set about improving it and working on incremental goals, including: collision detection, a persistent score, a leaderboard of highscores, localised weather forecast and topically sorted news articles. We ran into a few challenges throughout the week including working with relative URLs in Django, connecting to the database, and working with sprites in the canvas, but these were all overcome by perseverance, research and reading the documentation. This has made us excited to create more games in the future as a fun way of improving our coding abilities.
+
+![screenshot of home page](nq-screenshot04.jpg)
 
 
 ### Testing
