@@ -149,14 +149,14 @@ const tileSWidth = 20;
 const tileSHeight = 20;
 
 function drawTile(frameX, frameY, canvasX, canvasY) {
-  ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth, 
+  ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth,
                 tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight); // brick 1
 }
 
 //ANIMATED FOUNTAIN
 
 // function drawFtn(frameX, frameY, canvasX, canvasY) {
-//   ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth, 
+//   ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth,
 //                 tileWidth * 3, tileHeight * 3, canvasX * blockWidth, canvasY * blockWidth, tileSWidth * 3, tileSHeight * 3); // brick 1
 // }
 
@@ -554,7 +554,7 @@ function draw() {
           drawLevelEntrance(x, y)
           break;
         }
-      } 
+      }
     }
     drawTile(26,27,15,9);
     drawTile(26,22,15,4);
@@ -624,9 +624,7 @@ function draw() {
       username: username,
       points: points
     })
-  })
-  console.log('exit')
-  window.open("http://127.0.0.1:8000/world/","_self")
+  }).then(res => window.open("http://127.0.0.1:8000/world/","_self")) // only redirect once fetch (put) has happened
 };
 }
 

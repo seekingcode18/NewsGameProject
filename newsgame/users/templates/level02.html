@@ -16,12 +16,12 @@
         <!-- <div class="user-box"> -->
             <p class="user-para">Welcome, <span id="username">{{user.username}}</span></p>
             <p class="points-para">Points: <span id="points">{{user.points}}</span></p>
+            <input type="hidden" id="id" value={{user.id}}>
+            <input type="hidden" id="csrf" value={{csrf_token}}>
         <!-- </div> -->
         <div class="logout-box">
             <a href="{% url 'logout'%}">Log out</a>
         </div>
-        <input type="hidden" id="id" value={{user.id}}>
-        <input type="hidden" id="csrf" value={{csrf_token}}>
     </header>
     <main class="world-wrapper">
         <div class="col one">
