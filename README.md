@@ -95,4 +95,5 @@ If we had more time, we would have liked to implement the following features:
 * Retrieving the news by web scraping (this was a stretch goal - we got a basic scrape working but weren't able to categorise it since BBC Newsbeats didn't display categories on its home page)
 * Natural language processing to scan the text of a news article and identify key words to display under the headline
 * More advanced user authentication (we implemented a tick box to check parent permission as credit card verification was deemed out of scope for this project; we like the idea of using knowledge-based age verification where the sign up page redirects to a parent's permission page for parents to answer common questions about history, economics and politics that children wouldn't know or be able to easily Google)
-* We would test more of the front and back end functionality to increase the number of tests from 18
+* We would consider generating random usernames for users when they sign up so as to reduce the chance of young people using personally identifiable usernames
+* We would test more of the front and back end functionality to increase the number of tests from 18 (as explained above)
