@@ -141,7 +141,7 @@ const tileSWidth = 20;
 const tileSHeight = 20;
 
 function drawTile(frameX, frameY, canvasX, canvasY) {
-  ctx.drawImage(inner, frameX * tileWidth, frameY * tileWidth, 
+  ctx.drawImage(inner, frameX * tileWidth, frameY * tileWidth,
                 tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight); // brick 1
 }
 
@@ -340,7 +340,7 @@ function draw() {
           drawLevelEntrance(x, y)
           break;
         }
-      } 
+      }
     }
 
     drawFrame(cycleLoop[currentLoopIndex], currentDirection, 0, 0);
@@ -396,9 +396,7 @@ function draw() {
       username: username,
       points: points
     })
-  })
-  console.log('exit')
-  window.open("http://127.0.0.1:8000/world/","_self")
+  }).then(res => window.open("http://127.0.0.1:8000/world/","_self")) // only redirect once fetch (put) has happened
 };
 }
 

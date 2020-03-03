@@ -81,7 +81,7 @@ log.onload = function() {
 }
 
 function drawLog(frameX, frameY, canvasX, canvasY) {
-  // ctx.drawImage(log, frameX * tileWidth, frameY * tileWidth, 
+  // ctx.drawImage(log, frameX * tileWidth, frameY * tileWidth,
   //               tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight);
      ctx.drawImage(log, 0, 0, 32, 32, canvasX * blockWidth, canvasY * blockWidth, 20, 20);
 }
@@ -135,7 +135,7 @@ const tileSWidth = 20;
 const tileSHeight = 20;
 
 function drawTile(frameX, frameY, canvasX, canvasY) {
-  ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth, 
+  ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth,
                 tileWidth, tileHeight, canvasX * blockWidth, canvasY * blockWidth, tileSWidth, tileSHeight); // brick 1
 }
 
@@ -310,7 +310,7 @@ function draw() {
           drawTile(38,38,x,y);
           break;
         }
-      } 
+      }
     }
 
     drawFrame(cycleLoop[currentLoopIndex], currentDirection, 0, 0);
@@ -353,9 +353,7 @@ function draw() {
       username: username,
       points: points
     })
-  })
-  console.log('exit')
-  window.open("http://127.0.0.1:8000/world/","_self")
+  }).then(res => window.open("http://127.0.0.1:8000/world/","_self")) // only redirect once fetch (put) has happened
 };
 }
 

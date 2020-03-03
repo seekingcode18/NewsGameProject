@@ -12,16 +12,17 @@ grid = [
   [2,  0,  0,  'p7',  'p8',  'p8',  'p8',  'p8',  'p11',  'p5',  'p6',  0,  0,  0,  'h11',  'h12',  'h13',  'h14',  'h15',  2],
   [2,  0,'r',  0,  0,  0,  0,  0,  'p4',  'p5',  'p6',  0,  0,  0,  'h16',  'h17',  'h18',  'h19',  'h20',  2],
   [2,  0,  0,  0,  0,  0,  0,  0,  'p4',  'p5',  'p6',  0,  0,  0,  'h21',  'h22',  'h23',  'h24',  'h25',  2],
-  [2,  0, 'a4','a3', 0,  0,  0,  'ht',  'p4',  'p5',  'p12',  'p2',  'p2',  'p2', 'p2', 'p13', 'p5',  'p6',  0,  2],
-  [2,  0, 'a1','a2', 'log',  9,  0,  2,  'p4',  'p5',  'p5',  'p5',  'p5',  'p5', 'p5', 'p5', 'p5',  'p6',  0,  2],
-  [2,  0,  0,  0,  0,  0,  0,  2,  'p4',  'p5',  'p10',  'p8',  'p8',  'p8',  'p8',  'p8',  'p8',  'p9','r',  2],
-  ['bl',  1,  1,  1,  1,  1,  1,'br',  'p4',  'p5',  'p6','hl',  1,  1,  1,  1,  1,  1,  1,  'br'],
+  [2,  0, 'a4','a3', 0,     'put',  0,  'ht',  'p4',  'p5',  'p12',  'p2',  'p2',  'p2', 'p2', 'p13', 'p5',  'p6',  0,  2],
+  [2,  0, 'a1','a2', 'log',  9,    'put',  2,  'p4',  'p5',  'p5',  'p5',  'p5',  'p5', 'p5', 'p5', 'p5',  'p6',  0,  2],
+  [2,  0,  0,   0,    0,     'put',    0,  2,  'p4',  'p5',  'p10',  'p8',  'p8',  'p8',  'p8',  'p8',  'p8',  'p9','r',  2],
+  ['bl',  1,  1,  1,  1,  1,  1, 'br',  'p4',  'p5',  'p6','hl',  1,  1,  1,  1,  1,  1,  1,  'br'],
 
 ];
 
 const canvas = document.querySelector('canvas');
 canvas.style.backgroundColor = '#3bbf41';
 const ctx = canvas.getContext('2d');
+// const id = document.querySelector("#id").value;
 
 // ASSETS
 // ALL THINGS WEATHER RELATED
@@ -519,7 +520,7 @@ function draw() {
   }
 
   // exit when player is on exit block
-  if (currentLocationValue == 3) {
+  if (currentLocationValue == 'put') {
     fetch(`http://127.0.0.1:8000/user/${id}/`, {
       headers: {"Content-Type": "application/json; charset=utf-8",
       "X-CSRFToken": document.querySelector("#csrf").value
@@ -529,9 +530,11 @@ function draw() {
       username: username,
       points: points
     })
-  })
-  console.log('exit')
-  window.open("http://127.0.0.1:8000/world/","_self")
+  }).then(res => {
+    console.log('successful fetch (put)')
+    console.log(res)
+    // window.open("http://127.0.0.1:8000/world/","_self")
+})
 };
 }
 
