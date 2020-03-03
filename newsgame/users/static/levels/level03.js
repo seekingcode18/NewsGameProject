@@ -155,35 +155,35 @@ function drawTile(frameX, frameY, canvasX, canvasY) {
 
 //ANIMATED FOUNTAIN
 
-function drawFtn(frameX, frameY, canvasX, canvasY) {
-  ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth, 
-                tileWidth * 3, tileHeight * 3, canvasX * blockWidth, canvasY * blockWidth, tileSWidth * 3, tileSHeight * 3); // brick 1
-}
+// function drawFtn(frameX, frameY, canvasX, canvasY) {
+//   ctx.drawImage(tiles, frameX * tileWidth, frameY * tileWidth, 
+//                 tileWidth * 3, tileHeight * 3, canvasX * blockWidth, canvasY * blockWidth, tileSWidth * 3, tileSHeight * 3); // brick 1
+// }
 
-// fountain canvas location variables
-ftnX = 3 * 20;
-ftnY = 11 * 20;
-ftnX2 = ftnX + (3 * 20);
-ftnY2 = ftnY + (3 * 20);
-let ftnLoop = [22, 25, 28];
-let currentFtnLoop = 0;
-let ftnFrame = 0;
+// // fountain canvas location variables
+// ftnX = 3 * 20;
+// ftnY = 11 * 20;
+// ftnX2 = ftnX + (3 * 20);
+// ftnY2 = ftnY + (3 * 20);
+// let ftnLoop = [22, 25, 28];
+// let currentFtnLoop = 0;
+// let ftnFrame = 0;
 
-function aniFtn() {
-  ftnFrame++;
-  if (ftnFrame < 15){
-    window.requestAnimationFrame(aniFtn);
-    return;
-  }
-  ftnFrame = 0;
-  ctx.clearRect( ftnX, ftnY, ftnX2, ftnY2);
-  drawFtn(ftnLoop[currentFtnLoop], 9, 3, 11);
-  currentFtnLoop++;
-  if (currentFtnLoop >= ftnLoop.length) {
-    currentFtnLoop = 0;
-  }
-  window.requestAnimationFrame(aniFtn);
-};
+// function aniFtn() {
+//   ftnFrame++;
+//   if (ftnFrame < 15){
+//     window.requestAnimationFrame(aniFtn);
+//     return;
+//   }
+//   ftnFrame = 0;
+//   ctx.clearRect( ftnX, ftnY, ftnX2, ftnY2);
+//   drawFtn(ftnLoop[currentFtnLoop], 9, 3, 11);
+//   currentFtnLoop++;
+//   if (currentFtnLoop >= ftnLoop.length) {
+//     currentFtnLoop = 0;
+//   }
+//   window.requestAnimationFrame(aniFtn);
+// };
 
 // drawFtn(22,9, 3, 11);
 // drawFtn(25,9, 6, 11);
@@ -565,7 +565,7 @@ function draw() {
     drawTile(25,26,14,8); //bg13
     drawTvr(0,20, 7, 7);
     drawTvr(0,20, 1, 11);
-    aniFtn();
+    // aniFtn(); // <-- animation for the fountain (need to fix!)
     // ctx.drawImage(tiles, 0, 0, 16, 16, 0, 0, 16, 16);
     // drawFtn(22,9, 3, 11);
     // drawFtn(25,9, 6, 11);
