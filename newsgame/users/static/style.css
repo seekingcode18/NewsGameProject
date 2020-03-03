@@ -1,0 +1,223 @@
+:root {
+  --brown: #782F1D;
+  --cream: #EBC48D;
+  --grey: #5B6059;
+  --gold: #958C70;
+  --orange: #B85F39;
+}
+::selection {
+  color: white;
+  background-color: var(--orange);
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: url('./paper1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'MedievalSharp', cursive;
+  font-weight: bold;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fondamento', cursive;
+  font-weight: bold;
+}
+a {
+  color: #000000;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+input {
+  font-family: 'MedievalSharp', cursive;
+  font-weight: bold;
+}
+
+/* column layout */
+.world-wrapper {
+  padding-top: 4rem;
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.weather {
+  text-align: center;
+}
+.weather > p {
+  padding: 0;
+  margin: 0;
+}
+.instructions > li {
+  list-style-type: none;
+  padding-bottom: 6px;
+}
+.instructions > li::before {
+  content: '';
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  padding-right: 6px;
+  background-image: url('./ruby.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* home page before log in */
+.splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-box {
+  display: flex;
+  justify-content: center;
+}
+
+.login-box a, button, a[href="/highscores/"], #mute {
+  background: var(--brown);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  text-decoration: none;
+  transition: 0.2s;
+  border-radius: 5px;
+}
+#mute {
+  display: inline-block;
+}
+
+.login-box > a:hover, button:hover {
+  background: var(--orange);
+  cursor: pointer;
+}
+label {
+  line-height: 2;
+  padding-right: 0.5rem;
+}
+.login-container-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-container-2 button {
+  margin: auto;
+  display: block;
+  margin-top: 2rem;
+}
+
+.login-container-2 a {
+  color: var(--brown)
+}
+
+.login-container-2 h2 {
+  margin-top: 0;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+  border: 1px solid var(--grey);
+  padding: 0.3rem;
+  margin-left: 1rem;
+  border-radius: 5px;
+  background: #fcf4cf;
+}
+.form-wrapper {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+/* world */
+header {
+  background: var(--brown);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+.level-title {
+  text-align: center;
+}
+
+a[href="/highscores/"] {
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+/* game */
+.maze-container {
+  text-align: center;
+}
+canvas {
+  border: 1px black solid;
+  background: #eeeeee;
+}
+.output-bg {
+  padding: 1rem;
+  background-image: url('./scroll-2.png');
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: auto;
+  min-height: 220px;
+  height: 220px;
+}
+.output {
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+}
+.output > * {
+  margin: 0;
+  padding: 0;
+}
+.controls {
+  display: flex;
+  justify-content: center;
+}
+/* highscores */
+table {
+  margin: auto;
+  border-spacing: 0;
+  min-width: 80%;
+  cursor: default;
+}
+td {
+  text-align: center;
+  font-size: 1.35rem;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+}
+tr:hover {
+  color: var(--orange);
+}
+tr:nth-child(odd) {
+  background: rgba(255,255,255,0.3);
+}
+
+tr:nth-child(even) {
+  background: rgba(255,255,255,0.6);
+}
+
