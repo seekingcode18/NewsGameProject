@@ -80,7 +80,7 @@ This was a really fun project to work on. We achieved a very basic MVP after 2 d
 
 
 ### Testing
-We were able to achieve decent backend testing coverage using unittest to test the majority of our views, models and URLs. We didn't have time to test the frontend JavaScript but probably would have used Mocha & Chai. We would seek to test that the following:
+We were able to achieve decent backend testing coverage using unittest to test the majority of our views, models and URLs. We didn't have time to test the frontend JavaScript but probably would have used Mocha & Chai. We would seek to test the following:
 * map is drawn correctly after the start() function is called
 * player's position properties are updated when keys are pressed
 * score increments when player reads the news (stands on given blocks)
