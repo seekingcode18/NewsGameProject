@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% load static %}
+    <header>
+        <div class="header-title">
+            <h3><a href="{% url 'world' %}"><img src="{% static 'logo3.png' %}" alt="logo" style="width:24px;margin:0 10px -5px 0;">NewsQuest</a></h3>
+        </div>
+        <!-- <div class="user-box"> -->
+            <p class="user-para">Welcome, <span id="username">{{user.username}}</span></p>
+            <p class="points-para">Points: <span id="points">{{user.points}}</span></p>
+        <!-- </div> -->
+        <div class="logout-box">
+            <a href="{% url 'logout'%}">Log out</a>
+        </div>
+        <input type="hidden" id="id" value={{user.id}}>
+        <input type="hidden" id="csrf" value={{csrf_token}}>
+    </header>
+    <div class="world-wrapper" style="display:block;width:45%;">
+        <h2 style="text-align: center;">High Scores</h2>
+
+<table>
+{% for user in users %}
+    <tr>
+        <td>{{user.username}}</td>
+        <td>{{user.points}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+{% else %}
+<div class="world-wrapper" style="text-align:center;margin-top:15rem;">
+<div class="game-title">
+    <h1>NewsQuest</h1>
+</div>
+<div class="login-container">
+    <p>You don't appear to be logged in.</p>
+    <div class="login-box">
+        <a href="{% url 'login'%}">Login</a>
+        <a href="{% url 'signup'%}">Signup</a>
+    </div>
+</div>
+
+</div></div>
+{% endif %}
+{% endblock content %}

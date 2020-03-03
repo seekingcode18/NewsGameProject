@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% load static %}
+    <script type="text/javascript">
+        var p1 = "{% static 'Green-Cap-Character-16x18.png' %}";
+        var tileSet = "{% static 'Overworld.png' %}";
+        var innerSet = "{% static 'Inner.png' %}";
+        var char = "{% static 'character.png' %}";
+    </script>
+    <header>
+        <div class="header-title">
+            <h3><a href="{% url 'world' %}"><img src="{% static 'logo3.png' %}" alt="logo" style="width:24px;margin:0 10px -5px 0;">NewsQuest</a></h3>
+        </div>
+        <!-- <div class="user-box"> -->
+            <p class="user-para">Welcome, <span id="username">{{user.username}}</span></p>
+            <p class="points-para">Points: <span id="points">{{user.points}}</span></p>
+        <!-- </div> -->
+        <div class="logout-box">
+            <a href="{% url 'logout'%}">Log out</a>
+        </div>
+        <input type="hidden" id="id" value={{user.id}}>
+        <input type="hidden" id="csrf" value={{csrf_token}}>
+    </header>
+    <main class="world-wrapper">
+        <div class="col one">
+          <h3>Instructions</h3>
+          <ul class="instructions">
+              <li>Welcome to NewsQuest</li>
+              <li>Your aim is to move around the world using WASD</li>
+              <li>Visit different levels and read about different categories of news</li>
+              <li>When you read an article, you will accumulate points</li>
+              <li>You can also turn on music and view people's high scores</li>
+          </ul>
+          <div class="weather"></div>
+      </div>
+      <div class="col two">
+          <div class="maze-container">
+              <canvas height="300" width="400"></canvas>
+          </div>
+      </div>
+      <div class="col three">
+          <div class="output-bg">
+              <div class="output"></div>
+          </div>
+          <div class="controls">
+              <a href="#" id="mute">Toggle music</a>
+              <a href="{% url 'highscores'%}">High Scores</a>
+          </div>
+      </div>
+      </main>
+      <p id="id"></p>
+      <div id="player">
+      <audio hidden loop muted autoplay src="{% static 'superhero.ogg' %}" type="audio/ogg">
+      </audio>
+      </div>
+{% load static %}
+<script src="{% static 'levels/level02.js' %}" type="text/javascript"></script>
+
+{% else %}
+<div class="splash">
+    <div class="game-title">
+        <h1>NewsQuest</h1>
+    </div>
+    <div class="login-container">
+        <p>You don't appear to be logged in.</p>
+        <div class="login-box">
+            <a href="{% url 'login'%}">Login</a>
+            <a href="{% url 'signup'%}">Signup</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% endblock content %}

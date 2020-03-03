@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="splash">
+        <div class="login-container login-container-2">
+            <h4><a href="{% url 'home' %}">Home</a></h4>
+            <h2>Log in</h2>
+            <form method='post'>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type='submit'>Log in</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

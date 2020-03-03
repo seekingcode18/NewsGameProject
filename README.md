@@ -31,10 +31,15 @@ Our aim was to engage young people in the news. We both experienced a lack of in
 * ```git clone https://github.com/Ledwos/NewsGameProject.git``` into a new directory
 * Navigate into the repo you just cloned
 * ```cd newsgame```
+* ```python manage.py makemigrations```
+* ```python manage.py migrate```
 * ```python manage.py test``` to see the 18 tests passing
 * ```python manage.py runserver```
 * Navigate to ```localhost:8000``` in your browser to begin
 
+
+## About
+This is our final project for the Futureproof bootcamp. We decided to create a simple game that engages young people in the news by awarding them points for reading articles.
 ![screenshot of home page](nq-screenshot01.jpg)
 
 
@@ -72,6 +77,7 @@ Our aim was to engage young people in the news. We both experienced a lack of in
 ## Methodologies & Processes
 We started by brainstorming ideas and settled on making a game to engage young people in the news. We thought this was a problem worthy of our attention as we both experienced a disinterest in the news when we were younger and noticed the same in our peers. We decided a very simple MVP was best given the short time frame (1 week). This MVP was to let a user log in, move a character around a maze, and encounter other characters who would read them the news headlines.
 
+
 ![screenshot of home page](nq-screenshot03.jpg)
 
 
@@ -95,5 +101,7 @@ If we had more time, we would have liked to implement the following features:
 * Retrieving the news by web scraping (this was a stretch goal - we got a basic scrape working but weren't able to categorise it since BBC Newsbeats didn't display categories on its home page)
 * Natural language processing to scan the text of a news article and identify key words to display under the headline
 * More advanced user authentication (we implemented a tick box to check parent permission as credit card verification was deemed out of scope for this project; we like the idea of using knowledge-based age verification where the sign up page redirects to a parent's permission page for parents to answer common questions about history, economics and politics that children wouldn't know or be able to easily Google)
+* We would test more of the front and back end functionality to increase the number of tests from 18
 * We would consider generating random usernames for users when they sign up so as to reduce the chance of young people using personally identifiable usernames
 * We would test more of the front and back end functionality to increase the number of tests from 18 (as explained above)
+
